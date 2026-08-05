@@ -149,7 +149,7 @@
         <p class="haya-text">System Haya Online</p>
         <h1>Hello, My Aaloo 🥔❤️</h1>
         <p>I am <b>Haya</b>. Harsh built me to test you before I give you his surprise.</p>
-        <p>What is the exact date you told him you loved him early in the morning?</p>
+        <p>What is the exact date you told him you loved him?</p>
         <input type="date" id="magicDate">
         <button class="btn-primary" onclick="checkDate()">Verify Identity 🔓</button>
     </div>
@@ -164,10 +164,10 @@
     <div id="stepCaptcha" class="glass-panel hidden">
         <p class="haya-text">Haya Captcha</p>
         <h2>Are you human? 🤖</h2>
-        <p>Select the option that contains: <b>Your Future Husband</b></p>
+        <p>Select the option that contains: <b>Your Life ?</b></p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <button class="btn-option" style="width: 100%; margin:0;" onclick="failCaptcha()">A Pizza 🍕</button>
-            <button class="btn-option" style="width: 100%; margin:0;" onclick="passCaptcha()">Harsh ❤️</button>
+            <button class="btn-option" style="width: 100%; margin:0;" onclick="passCaptcha()">Gulab Jamun ❤️</button>
             <button class="btn-option" style="width: 100%; margin:0;" onclick="failCaptcha()">Aaloo 🥔</button>
             <button class="btn-option" style="width: 100%; margin:0;" onclick="failCaptcha()">A Panda 🐼</button>
         </div>
@@ -177,7 +177,7 @@
         <p class="haya-text">Legal Binding</p>
         <h2>Terms & Conditions 📜</h2>
         <p style="font-size: 13px; text-align: left; background: #ffe6ea; padding: 10px; border-radius: 10px; height: 80px; overflow-y: auto;">
-            By checking the box below, you agree that Harsh is always right, Harsh is the cutest, and you owe Harsh infinite hugs forever.
+            By checking the box below, you agree that Harsh is you forever partner, Harsh is the cutest, and you owe Harsh infinite hugs forever.
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; position: relative; height: 40px;">
@@ -228,7 +228,7 @@
 
     <div id="stepCall" class="glass-panel hidden" style="background: #1e272e; color: white;">
         <p style="color: #4cd137; font-weight: bold; margin: 0;">Incoming Call...</p>
-        <h1 style="color: white;">Harsh ❤️</h1>
+        <h1 style="color: white;">Mataruu ❤️</h1>
         <p style="color: #888;">Mobile</p>
         <div style="display: flex; justify-content: space-around; margin-top: 30px;">
             <button style="background: #ff4757; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-family: 'Nunito';" onmouseover="runAway(this)" ontouchstart="runAway(this)">Decline</button>
@@ -278,7 +278,7 @@
         <p class="haya-text">Sweetness Check</p>
         <h2>Identity Protocol 🍮</h2>
         <p>Aaloo is his cute name for you. But what do you call HIM when he's looking extra sweet?</p>
-        <p style="font-size: 12px; color: #888;">(Hint: A very sweet, round Indian dessert!)</p>
+        <p style="font-size: 12px; color: #888;">(Hint: A very sweet, Matches his colour tone)</p>
         <input type="text" id="nicknameInput" placeholder="Enter nickname...">
         <button class="btn-primary" onclick="checkNickname()">Verify Sweetness</button>
     </div>
@@ -299,7 +299,7 @@
         <div class="blur-text" ontouchstart="this.style.filter='blur(0)'" onmouseover="this.style.filter='blur(0)'">
             <b>Question:</b> What is Harsh's absolute favorite snack in the world?
         </div>
-        <button class="btn-option" onclick="actionFood('chips')">A. Chips</button>
+        <button class="btn-option" onclick="actionFood('chips')">A. Ice Cream</button>
         <button class="btn-option" onclick="actionFood('pizza')">B. Pizza</button>
         <button class="btn-option" onclick="actionFood('aaloo')">C. My Aaloo 🥔</button>
     </div>
@@ -323,7 +323,7 @@
     </div>
 
     <div id="stepRedBtn" class="glass-panel hidden">
-        <p class="haya-text">Haya's Rules</p>
+        <p class="haya-text">Haya's Warning !</p>
         <h2>Forbidden Action 🛑</h2>
         <p>Whatever you do, absolutely DO NOT press this red button.</p>
         <div class="red-btn" ontouchstart="actionRedBtn(event)" onmousedown="actionRedBtn(event)">PRESS</div>
@@ -656,7 +656,7 @@
             } else { playSound('wrong'); showModal("HAYA: Incorrect date! Try again before I lock you out! 🥺"); }
         }
 
-        function failCaptcha() { playSound('wrong'); showModal("HAYA: Wrong! That is not your future husband. Try again. 🙄"); tracker.pranksFallenFor++; }
+        function failCaptcha() { playSound('wrong'); showModal("HAYA: Wrong! That is not your Life Partner. Try again. 🙄"); tracker.pranksFallenFor++; }
         function passCaptcha() { playSound('right'); showModal("HAYA: Correct! That handsome boy is yours. 🥰", () => nextStep('Captcha', 'Terms')); }
 
         function checkTerms() {
@@ -674,7 +674,7 @@
         function qPrettiest(ans) {
             tAdd('pretty', ans);
             let panel = document.getElementById('step2'); panel.classList.add('shatter'); playSound('wrong');
-            setTimeout(() => { showModal("Are you out of your mind?! 😱 Harsh's eyes only work for his Aaloo! I'm Haya and I won't allow this! 😤", () => { panel.classList.remove('shatter'); document.getElementById('fogScreen').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden'); }); }, 600);
+            setTimeout(() => { showModal("Are you serious this will be answer?! 😱 Harsh's eyes only work for his Aaloo! I won't allow this! 😤", () => { panel.classList.remove('shatter'); document.getElementById('fogScreen').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden'); }); }, 600);
         }
 
         let fogSwipes = 0;
@@ -700,7 +700,7 @@
             else { playSound('wrong'); showModal("Type it properly! 'I am a cute Aaloo'"); }
         }
 
-        function acceptCall() { playSound('right'); showModal("HAYA: Call intercepted. Harsh says he loves you. Moving on! 📱❤️", () => nextStep('Call', 3)); }
+        function acceptCall() { playSound('right'); showModal("HAYA: Call intercepted. Harsh says he loves you so much.📱❤️", () => nextStep('Call', 3)); }
 
         function actionPrivate(type, btn) {
             tAdd('private', type);
@@ -725,14 +725,14 @@
 
         function checkNickname() {
             let val = document.getElementById('nicknameInput').value.toLowerCase().replace(/\s/g, '');
-            if(val.includes('gulabjamun')) { playSound('right'); tracker.nickname = "Gulab Jamun 🍮"; showModal("HAYA: Aww, Gulab Jamun! That's so sweet my battery just recharged! 🍮❤️", () => nextStep('Nickname', 'Math')); } 
-            else { playSound('wrong'); tracker.pranksFallenFor++; showModal("HAYA: Wrong! Hint: It's a very sweet, round Indian dessert! You call him this! 😤"); }
+            if(val.includes('gulabjamun')) { playSound('right'); tracker.nickname = "Gulab Jamun 🍮"; showModal("HAYA: Aww, Yes! That's so sweet name isn't it? 🍮❤️", () => nextStep('Nickname', 'Math')); } 
+            else { playSound('wrong'); tracker.pranksFallenFor++; showModal("HAYA: Wrong! Hint: It's a very sweet, You call him this! 😤"); }
         }
 
         function actionMath(ans) {
             if(ans === '2') { playSound('wrong'); showModal("HAYA: Wrong! 1+1 = Us! Have some romance in you! 🙄"); tracker.pranksFallenFor++; }
             else if(ans === '11') { playSound('wrong'); showModal("HAYA: You need a calculator AND romance. Wrong! 😤"); tracker.pranksFallenFor++; }
-            else { playSound('right'); showModal("Correct! You are learning how Harsh's logic works! 🥰", () => nextStep('Math', 'Food')); }
+            else { playSound('right'); showModal("Correct! You are learning how Harsh's love logic works! 🥰", () => nextStep('Math', 'Food')); }
         }
 
         function actionFood(ans) {
@@ -742,7 +742,7 @@
 
         let kissCaught = false;
         setInterval(() => { if(!kissCaught && !document.getElementById('stepFlyingKiss').classList.contains('hidden')) { let kiss = document.getElementById('kissEmoji'); kiss.style.left = Math.random() * 80 + '%'; kiss.style.top = Math.random() * 80 + '%'; } }, 800);
-        function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! 💋 You caught it!", () => nextStep('FlyingKiss', 4)); }
+        function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! Take this Paari 💋 You caught it!", () => nextStep('FlyingKiss', 4)); }
 
         // FIXED SAFE SPACE LOGIC (Kanha Ji doesn't skip the minigame anymore!)
         let armsCount = 0;
@@ -810,7 +810,7 @@
             if(e) e.preventDefault(); 
             playSound('alarm'); 
             document.getElementById('stepRedBtn').classList.add('hidden');
-            showModal("HAYA: Wow, so rebellious. I said DO NOT press it! ...But honestly, Harsh loves that about you. 😏 Pass.", () => {
+            showModal("Wow, so rebellious. I said DO NOT press it! ...But honestly, I loves that about you. 😏 Pass.", () => {
                 let nextEl = document.getElementById('stepColor');
                 nextEl.classList.remove('hidden');
                 nextEl.classList.add('fade-in');
@@ -822,7 +822,7 @@
 
         function startLoveBomb() {
             playSound('alarm'); document.getElementById('stepLoveBomb').classList.add('hidden');
-            let msgs = ["You're my Aaloo! 🥔", "I love you! ❤️", "So cute! 🥺", "My Gulab Jamun! 🍮", "Smile for me! ✨", "Nautanki! 🎭", "Mine forever! 🔒", "Princess! 👑", "Cutiepie! 🥰", "Hugs! 🤗", "Kisses! 😘", "You are my world! 🌍", "My everything! 💖", "Beautiful! 😍", "Don't stop smiling! ✨"];
+            let msgs = ["You're my Aaloo! 🥔", "I love you! ❤️", "So cute! 🥺", "Your Gulab Jamun! 🍮", "Smile for me! ✨", "Nautanki! 🎭", "Mine forever! 🔒", "Princess! 👑", "Cutiepie! 🥰", "Hugs! 🤗", "Kisses! 😘", "You are my world! 🌍", "My everything! 💖", "Beautiful! 😍", "Don't stop smiling! ✨"];
             tracker.bombsCleared = 0;
             for(let i=0; i<15; i++) {
                 setTimeout(() => {
@@ -934,7 +934,7 @@
                         clearInterval(speedTimer); 
                         document.getElementById('speedTimer').innerText = "0.0"; 
                         playSound('wrong'); 
-                        document.getElementById('speedMsg').innerText = "HAYA: Too slow! Just kidding, I read it. You pass! 😂"; 
+                        document.getElementById('speedMsg').innerText = "HAYA: Too slow! Just kidding, I Ik already. You pass! 😂"; 
                         document.getElementById('proceedSpeed').classList.remove('hidden'); 
                     } 
                 }, 100); 
@@ -1046,7 +1046,7 @@
                 });
             } else {
                 playSound('right');
-                tracker.finalHandChoice = "Held his hand forever 🤝❤️";
+                tracker.finalHandChoice = "Held our hand forever 🤝❤️";
                 nextStep('Hand', 14);
             }
         }
