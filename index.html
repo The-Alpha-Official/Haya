@@ -180,7 +180,6 @@
             By checking the box below, you agree that Harsh is always right, Harsh is the cutest, and you owe Harsh infinite hugs forever.
         </p>
         
-        <!-- UPGRADED CHECKBOX SHIELD FOR MOBILE DODGING -->
         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; position: relative; height: 40px;">
             <div class="dodging-check-container" id="checkContainer" style="position: relative;">
                 <div id="checkShield" style="position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px; z-index: 5;" ontouchstart="dodgeCheckbox(event)" onmousedown="dodgeCheckbox(event)"></div>
@@ -498,6 +497,38 @@
         <p id="scanText" style="color: #888;">Waiting for scan...</p>
     </div>
 
+    <!-- HEART STRING (ROPE) SEGMENT -->
+    <div id="stepRope" class="glass-panel hidden">
+        <p class="haya-text">Heart String</p>
+        <h2>Pull Me Closer 🪢</h2>
+        
+        <div id="ropeScene" style="position: relative; height: 120px; width: 100%; margin: 20px 0; display: flex; align-items: flex-end; justify-content: space-between; overflow: hidden;">
+            <div id="theRope" style="position: absolute; top: 70px; left: 10%; right: 10%; height: 3px; background: repeating-linear-gradient(45deg, #8b5a2b, #8b5a2b 5px, #a0522d 5px, #a0522d 10px); z-index: 1;"></div>
+            
+            <div id="boyAvatar" style="position: absolute; left: 0%; bottom: 10px; z-index: 2; text-align: center;">
+                <div style="font-size: 45px; transform: scaleX(-1);">🚶‍♂️</div>
+                <div style="font-size: 11px; font-weight: 900; color: #d6336c; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 5px;">Gulab Jamun</div>
+            </div>
+            
+            <div id="girlAvatar" style="position: absolute; right: 0%; bottom: 10px; z-index: 2; text-align: center;">
+                <div style="font-size: 45px;">🚶‍♀️</div>
+                <div style="font-size: 11px; font-weight: 900; color: #d6336c; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 5px;">Rasmalai</div>
+            </div>
+
+            <div id="hugAvatar" style="position: absolute; left: 50%; transform: translateX(-50%); bottom: 10px; z-index: 3; display: none; text-align: center;">
+                <div style="font-size: 55px; animation: heartbeat 1.2s infinite;">👩‍❤️‍👨</div>
+                <div style="font-size: 12px; font-weight: 900; color: #d6336c; background: rgba(255,255,255,0.7); padding: 2px 5px; border-radius: 5px;">Us Forever ❤️</div>
+            </div>
+        </div>
+        
+        <p id="ropeMsg" style="font-size: 14px; margin-bottom: 15px; font-weight: bold; color: #5a3e46; min-height: 45px;">Distance is just an illusion. Tap the button rapidly to pull him back to you!</p>
+        
+        <div class="loading-bar" id="ropeBarContainer"><div class="loading-fill" id="ropeFill" style="transition: width 0.1s;"></div></div>
+        
+        <button id="ropeBtn" class="btn-primary" style="margin-top: 15px;" ontouchstart="pullRope(event)" onmousedown="pullRope(event)">Pull Closer! 🪢</button>
+        <button id="ropeProceed" class="btn-primary hidden heartbeat-btn" style="margin-top: 15px;" onclick="nextStep('Rope', 13)">Read My Heart 💌</button>
+    </div>
+
     <div id="step13" class="glass-panel hidden" style="max-height: 90vh;">
         <h2>Meri Pyaari Aaloo 🥔❤️</h2>
         <div class="letter-text">
@@ -507,13 +538,13 @@
             <p>Ik college me classes h aur baki new chije aayi h jisse busy hue h but ham ekdusre ko dilse time denge to vo hame burden nhi lagega let's change our form of love ham ekdusre ko hasane ka try karenge ekdusre k liye dilse chije karenge abhi hamare andar dar aa gya h yrr to vo krne me easy nhi lg rha but let's forget everything just remember our love moments and hamari ID pe hamari photo k caption, story , and hamare gifts dekhiye how special those are...</p>
             <p>In the rush we can't loose our real love yrr it's like a plant we will grow it like our baby ... I am sorry for everything yrr but let's start a new phase just share your pure love trust and faith like you did before ,life changes and the things we like also changes but let's not compromise in love let's change and notice changes and improve each other with those we're on the same side baby i don't expect any thing just love it's the only thing i want to continue till my life just by enjoying it with you...</p>
             <p>Lets do whatever we want to do together lets create boundaries for problems not between us becuase we know each other just treat me like you want nothing is cringe and all that between us i like everything you say ......Give me your hand my princess if you agree and we'll each one fav of all time rest can be changed....</p>
-            <p>Ik this became a lecture but i just want to tell you I am all yours forever.</p>
+            <p>Ik this became a lecture more but i want to see my aaloo more happier than before with me , i just want to tell you I am all yours forever.</p>
         </div>
         <button class="btn-primary heartbeat-btn" onclick="triggerFinale('Yes forever')">Yes forever ❤️</button>
         <button id="hesitateBtn" class="btn-primary" style="background: #999; margin-top: 10px; transition: all 1s ease;" onclick="actionHesitate(this)">I hesitate.. 🥺</button>
     </div>
 
-    <!-- NEW ROMANTIC HAND HOLDING SEGMENT -->
+    <!-- ROMANTIC HAND HOLDING SEGMENT -->
     <div id="stepHand" class="glass-panel hidden">
         <p class="haya-text">Final Moment</p>
         <h2>My Hand in Yours 🤝</h2>
@@ -525,8 +556,8 @@
 
     <div id="step14" class="glass-panel hidden">
         <h1 id="finalQuote"></h1>
-        <p>Send your Top Secret Haya Report and Photos to Harsh! 💌</p>
-        <button class="btn-primary" onclick="sendToEmail()">Send to Harsh 🚀</button>
+        <p>Your Haya test is complete. ❤️</p>
+        <button class="btn-primary" onclick="sendToWhatsApp()">Send to WhatsApp 🚀</button>
     </div>
 
     <div id="customModal" class="modal-overlay hidden">
@@ -538,7 +569,7 @@
 
     <script>
         let tracking = { pretty: [], private: [], safe: [], nautanki: [], charm: [], dream: [], stare: [] };
-        let tracker = { dodgesCaught: 0, termsDodges: 0, autoFails: 0, memory: '', bribe: '100 Kisses 😘', lieDetector: 'FAILED (Was definitely blushing)', finalChoice: '', finalHandChoice: '', hesitateClicks: 0, pranksFallenFor: 0, nickname: '', bombsCleared: 0 };
+        let tracker = { dodgesCaught: 0, termsDodges: 0, autoFails: 0, memory: '', bribe: '100 Kisses 😘', lieDetector: 'FAILED (Was definitely blushing)', ropeChallenge: 'Did not complete', finalChoice: '', finalHandChoice: '', hesitateClicks: 0, pranksFallenFor: 0, nickname: '', bombsCleared: 0 };
         
         function tAdd(q, val) { tracking[q].push(val); }
         function formatHistory(q) {
@@ -551,17 +582,21 @@
 
         let audioCtx;
         function initAudio() {
-            if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            if(audioCtx.state === 'suspended') audioCtx.resume();
+            try {
+                if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if(audioCtx.state === 'suspended') audioCtx.resume();
+            } catch(e) { console.log("Audio not supported"); }
         }
         function playSound(type) {
-            if(!audioCtx) return;
-            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            if(type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1); osc.stop(audioCtx.currentTime + 0.1); } 
-            else if(type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.5); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.5); osc.stop(audioCtx.currentTime + 0.5); } 
-            else if(type === 'right') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4); osc.stop(audioCtx.currentTime + 0.4); } 
-            else if(type === 'alarm') { osc.type = 'square'; osc.frequency.setValueAtTime(800, audioCtx.currentTime); osc.frequency.setValueAtTime(1000, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6); osc.stop(audioCtx.currentTime + 0.6); }
+            try {
+                if(!audioCtx) return;
+                const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                if(type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1); osc.stop(audioCtx.currentTime + 0.1); } 
+                else if(type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.5); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.5); osc.stop(audioCtx.currentTime + 0.5); } 
+                else if(type === 'right') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4); osc.stop(audioCtx.currentTime + 0.4); } 
+                else if(type === 'alarm') { osc.type = 'square'; osc.frequency.setValueAtTime(800, audioCtx.currentTime); osc.frequency.setValueAtTime(1000, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6); osc.stop(audioCtx.currentTime + 0.6); }
+            } catch(e) {}
         }
         document.querySelectorAll('.btn-option, .btn-primary').forEach(btn => { btn.addEventListener('click', () => { if(audioCtx) playSound('click'); }); });
 
@@ -576,23 +611,20 @@
         function closeModal() { document.getElementById('customModal').classList.add('hidden'); if(document.getElementById('customModal').callback) document.getElementById('customModal').callback(); }
         function runAway(btn) { let x = (Math.random() - 0.5) * 150; let y = (Math.random() - 0.5) * 150; btn.style.transform = `translate(${x}px, ${y}px)`; }
 
-        // --- NEW BULLETPROOF CHECKBOX DODGE SYSTEM ---
         function dodgeCheckbox(e) {
-            e.preventDefault(); // Physically blocks her from tapping the real checkbox below it!
+            e.preventDefault(); 
             playSound('click');
             tracker.termsDodges++;
             tracker.dodgesCaught++; 
             let box = document.getElementById('checkContainer');
             
             if(tracker.termsDodges < 4) {
-                // Throws the checkbox wildly away from her finger
                 let x = (Math.random() > 0.5 ? 1 : -1) * (40 + Math.random() * 50);
                 let y = (Math.random() > 0.5 ? 1 : -1) * (20 + Math.random() * 30);
                 box.style.transform = `translate(${x}px, ${y}px)`;
             } else {
-                // After 4 frustrating taps, give up and let her click it
                 box.style.transform = `translate(0px, 0px)`;
-                document.getElementById('checkShield').style.display = 'none'; // Removes the shield!
+                document.getElementById('checkShield').style.display = 'none';
                 showModal("HAYA: Ugh, fine! You can check it now. 🙄");
             }
         }
@@ -613,7 +645,8 @@
 
         function checkDate() {
             initAudio();
-            if(document.getElementById('magicDate').value === '2024-01-17') {
+            let d = document.getElementById('magicDate').value;
+            if(d === '2024-01-17' || d === '17-01-2024' || d === '2024-17-01' || d.includes('17')) {
                 playSound('right'); document.getElementById('step1').classList.add('hidden'); document.getElementById('stepFakeLoad').classList.remove('hidden');
                 let fill = document.getElementById('loadFill'); let text = document.getElementById('loadText');
                 setTimeout(()=>{fill.style.width = '30%'; text.innerText="Analyzing cuteness..."; playSound('click');}, 1000);
@@ -711,6 +744,7 @@
         setInterval(() => { if(!kissCaught && !document.getElementById('stepFlyingKiss').classList.contains('hidden')) { let kiss = document.getElementById('kissEmoji'); kiss.style.left = Math.random() * 80 + '%'; kiss.style.top = Math.random() * 80 + '%'; } }, 800);
         function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! 💋 You caught it!", () => nextStep('FlyingKiss', 4)); }
 
+        // FIXED SAFE SPACE LOGIC (Kanha Ji doesn't skip the minigame anymore!)
         let armsCount = 0;
         let inArmsChallenge = false;
         function actionSafe(ans, btn) {
@@ -723,12 +757,8 @@
                 setTimeout(() => { btn.classList.remove('flip-upside'); showModal('You are always in my heart, but I meant physically... unless you learned teleportation? 🛸😉'); }, 1000); 
             }
             else if(ans === 'mandir') { 
-                playSound('right'); showModal('That is pure peace. Come, let\'s visit together very soon 🙏❤️', () => {
-                    document.getElementById('step4').classList.add('hidden');
-                    let nextEl = document.getElementById('stepRedBtn');
-                    nextEl.classList.remove('hidden');
-                    nextEl.classList.add('fade-in');
-                }); 
+                playSound('click'); 
+                showModal('That is pure peace, and we will visit together very soon 🙏❤️... But what is your safest place WITH me? 😉'); 
             }
             else { 
                 playSound('right');
@@ -938,8 +968,60 @@
         function handlePhoto2() { document.getElementById('uploadText2').innerText = "UPLOADING TO DELETE... 🗑️"; mainBody.classList.add('alarm-bg'); playSound('alarm'); setTimeout(() => { mainBody.classList.remove('alarm-bg'); showModal("🚨 HAYA SECURITY OVERRIDE 🚨\n\nDeletion Denied! No photo of Harsh and you can be deleted. This embarrassing photo has now been permanently saved to his 'Cute Aaloo' folder! 😎", () => { nextStep(11, 12); }); }, 2000); }
 
         let scanTimer; let scanSuccess = false;
-        function startScan(e) { if(e) e.preventDefault(); document.getElementById('scanText').innerText = "Scanning biometrics... 🟢"; playSound('click'); scanTimer = setTimeout(() => { scanSuccess = true; playSound('alarm'); showModal("🚨 HAYA LIE DETECTOR 🚨\n\nSensors indicate you are 100% blushing and smiling right now. You may proceed.", () => nextStep(12, 13)); }, 3000); }
+        function startScan(e) { 
+            if(e) e.preventDefault(); 
+            document.getElementById('scanText').innerText = "Scanning biometrics... 🟢"; 
+            playSound('click'); 
+            scanTimer = setTimeout(() => { 
+                scanSuccess = true; 
+                playSound('alarm'); 
+                showModal("🚨 HAYA LIE DETECTOR 🚨\n\nSensors indicate you are 100% blushing and smiling right now. You may proceed.", () => nextStep(12, 'Rope')); 
+            }, 3000); 
+        }
         function stopScan(e) { if(e) e.preventDefault(); if(!scanSuccess) { clearTimeout(scanTimer); document.getElementById('scanText').innerText = "Scan failed. Keep your thumb on the screen longer! 😠"; playSound('wrong'); } }
+
+        let ropeScore = 0; let ropeTimer; let ropeDone = false;
+        function pullRope(e) {
+            if(e) e.preventDefault(); 
+            if(ropeDone) return; 
+            playSound('click'); 
+            ropeScore += 10;
+            
+            if(!ropeTimer) { 
+                ropeTimer = setInterval(() => { 
+                    if(ropeScore > 0) ropeScore -= 3; 
+                    if(ropeScore < 0) ropeScore = 0; 
+                    document.getElementById('ropeFill').style.width = ropeScore + '%';
+                    
+                    if(!ropeDone) {
+                        let move = (ropeScore / 100) * 35; 
+                        document.getElementById('boyAvatar').style.left = move + '%';
+                        document.getElementById('girlAvatar').style.right = move + '%';
+                    }
+                }, 200); 
+            }
+            
+            if(ropeScore >= 100) { 
+                ropeScore = 100; ropeDone = true; clearInterval(ropeTimer); playSound('right'); 
+                tracker.ropeChallenge = "She pulled him closer and they hugged! 🪢👩‍❤️‍👨";
+                
+                document.getElementById('ropeBarContainer').classList.add('hidden');
+                document.getElementById('ropeBtn').classList.add('hidden');
+                
+                document.getElementById('boyAvatar').style.display = 'none';
+                document.getElementById('girlAvatar').style.display = 'none';
+                document.getElementById('theRope').style.display = 'none';
+                document.getElementById('hugAvatar').style.display = 'block';
+                
+                document.getElementById('ropeMsg').innerHTML = "<em>Let's forget the distance and misunderstandings... Let's be each other's just like before, connected by heart. Then everything will be beautiful again, not a routine.</em> 🥺❤️"; 
+                document.getElementById('ropeProceed').classList.remove('hidden'); 
+            } else {
+                let move = (ropeScore / 100) * 35; 
+                document.getElementById('boyAvatar').style.left = move + '%';
+                document.getElementById('girlAvatar').style.right = move + '%';
+            }
+            document.getElementById('ropeFill').style.width = ropeScore + '%';
+        }
 
         function actionHesitate(btn) {
             tracker.hesitateClicks++; playSound('wrong');
@@ -955,7 +1037,6 @@
             showModal("A virtual sunflower for my sunshine. 🌻 (Haya is signing off...)", () => { document.getElementById('finalQuote').innerText = "Let's love to the maximum. Life goes on, love remains forever... 💞"; nextStep(13, 'Hand'); });
         }
 
-        // --- NEW ROMANTIC HAND HOLDING ACTION ---
         function actionHand(choice) {
             if(choice === 'Hate') {
                 playSound('wrong'); tracker.pranksFallenFor++;
@@ -970,8 +1051,8 @@
             }
         }
 
-   function sendToEmail() {
-            // 1. Gather all the tracking data
+        // PERFECT WHATSAPP METHOD
+        function sendToWhatsApp() {
             let msg = `H.A.Y.A. TOP SECRET REPORT 🤖💖\n\n`;
             msg += `Harsh, I survived Haya's endless torture! Here is my full Aaloo Report:\n\n`;
             msg += `--- 📊 MY EXACT CLICK HISTORY ---\n`;
@@ -989,53 +1070,31 @@
             msg += `- I fell for Haya's fake pranks ${tracker.pranksFallenFor} times!\n`;
             msg += `- I cleared ${tracker.bombsCleared} Love Bombs!\n`;
             msg += `- I chased dodging buttons ${tracker.dodgesCaught} times.\n`;
-            msg += `- I clicked 'I hesitate' ${tracker.hesitateClicks} times (and Haya yelled at me)!\n`;
+            msg += `- I clicked 'I hesitate' ${tracker.hesitateClicks} times!\n`;
             msg += `- Bribe Accepted: ${tracker.bribe}\n`;
-            msg += `- Lie Detector: ${tracker.lieDetector}\n\n`;
+            msg += `- Lie Detector: ${tracker.lieDetector}\n`;
+            msg += `- Rope Challenge: ${tracker.ropeChallenge}\n\n`;
             msg += `--- 💭 OUR MEMORY ---\n`;
             msg += `${tracker.memory}\n\n`;
             msg += `--- 💌 FINAL DECISIONS ---\n`;
             msg += `- Letter Response: ${tracker.finalChoice}\n`;
-            msg += `- Hand Response: ${tracker.finalHandChoice} ❤️`;
+            msg += `- Hand Response: ${tracker.finalHandChoice} ❤️\n\n`;
+            msg += `(Harsh, I have the 2 photos ready to send you now! 🫣📸)`;
 
+            let encodedMsg = encodeURIComponent(msg);
+
+            // ---> IMPORTANT: PUT YOUR PHONE NUMBER HERE (Keep the 91, do NOT use + sign) <---
+            let myNumber = "917906154631"; 
+
+            playSound('right');
             let btn = document.querySelector('#step14 .btn-primary');
-            btn.innerText = "Uploading Photos & Report... ⏳";
-            btn.style.pointerEvents = "none"; 
-            playSound('click');
+            btn.innerText = "Opening WhatsApp... ⏳";
 
-            let photo1 = document.querySelector('#step10 input[type="file"]').files[0];
-            let photo2 = document.querySelector('#step11 input[type="file"]').files[0];
-
-            let formData = new FormData();
-            formData.append('Subject', '🚨 New Haya Report with PHOTOS! 🥔❤️');
-            formData.append('Message', msg);
-            
-            // Attach photos if they exist
-            if(photo1) { formData.append('Proof_Photo', photo1); }
-            if(photo2) { formData.append('Embarrassing_Photo', photo2); }
-
-            // ---> PASTE YOUR FORMINIT LINK BELOW! <---
-           fetch('https://forminit.com/f/upnb4geddg0', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    playSound('right');
-                    btn.innerText = "Sent Successfully! ✅";
-                    showModal("HAYA: Report and PHOTOS uploaded successfully to Harsh's secure server! 🤖📸\n\nYou are all done! You can close this page now. ❤️");
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                playSound('wrong');
-                showModal("HAYA: Server error. Tell Harsh to fix my circuits! 🤖");
-                btn.innerText = "Try Again 🔄";
-                btn.style.pointerEvents = "auto";
-                console.error(error);
+            showModal("HAYA: Report generated! 🤖\n\nWhatsApp will now open automatically. Just hit 'Send' and don't forget to attach the 2 photos manually! Go go go! ❤️", () => {
+                window.location.href = `https://wa.me/${myNumber}?text=${encodedMsg}`;
+                btn.innerText = "Send to Harsh 🚀"; 
             });
         }
+    </script>
+</body>
+</html>
