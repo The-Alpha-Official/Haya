@@ -970,7 +970,7 @@
             }
         }
 
-        function sendToEmail() {
+   function sendToEmail() {
             // 1. Gather all the tracking data
             let msg = `H.A.Y.A. TOP SECRET REPORT 🤖💖\n\n`;
             msg += `Harsh, I survived Haya's endless torture! Here is my full Aaloo Report:\n\n`;
@@ -998,45 +998,44 @@
             msg += `- Letter Response: ${tracker.finalChoice}\n`;
             msg += `- Hand Response: ${tracker.finalHandChoice} ❤️`;
 
-            // Change button text so she knows it's uploading large photo files
             let btn = document.querySelector('#step14 .btn-primary');
             btn.innerText = "Uploading Photos & Report... ⏳";
-            btn.style.pointerEvents = "none"; // Stop double clicks
+            btn.style.pointerEvents = "none"; 
             playSound('click');
 
-            // Grab the actual image files she selected!
             let photo1 = document.querySelector('#step10 input[type="file"]').files[0];
             let photo2 = document.querySelector('#step11 input[type="file"]').files[0];
 
-            // 2. Create FormData (This allows sending text + heavy files together)
             let formData = new FormData();
-            formData.append('access_key', '65beaec3-7e92-41f1-a4a5-356e6a6b70d6'); // Your actual key!
-            formData.append('subject', '🚨 New Haya Report with PHOTOS! 🥔❤️');
-            formData.append('message', msg);
+            formData.append('Subject', '🚨 New Haya Report with PHOTOS! 🥔❤️');
+            formData.append('Message', msg);
             
-            // Attach the photos if she uploaded them
+            // Attach photos if they exist
             if(photo1) { formData.append('Proof_Photo', photo1); }
             if(photo2) { formData.append('Embarrassing_Photo', photo2); }
 
-            // 3. Silently email everything in the background
-            fetch('https://api.web3forms.com/submit', {
+            // ---> PASTE YOUR FORMINIT LINK BELOW! <---
+            fetch('YOUR_FORMINIT_LINK_HERE', {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
             })
-            .then(response => response.json())
-            .then(data => {
-                playSound('right');
-                btn.innerText = "Sent Successfully! ✅";
-                showModal("HAYA: Report and PHOTOS uploaded successfully to Harsh's secure server! 🤖📸\n\nYou are all done! You can close this page now. ❤️");
+            .then(response => {
+                if (response.ok) {
+                    playSound('right');
+                    btn.innerText = "Sent Successfully! ✅";
+                    showModal("HAYA: Report and PHOTOS uploaded successfully to Harsh's secure server! 🤖📸\n\nYou are all done! You can close this page now. ❤️");
+                } else {
+                    throw new Error('Network response was not ok');
+                }
             })
             .catch(error => {
                 playSound('wrong');
                 showModal("HAYA: Server error. Tell Harsh to fix my circuits! 🤖");
                 btn.innerText = "Try Again 🔄";
                 btn.style.pointerEvents = "auto";
-                console.log(error);
+                console.error(error);
             });
         }
-    </script>
-</body>
-</html>
