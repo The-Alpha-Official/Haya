@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Haya: The Aaloo Test 🥔❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Nunito:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Nunito', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden;
+            color: #5a3e46; 
+            touch-action: manipulation; 
+            transition: filter 1s ease, background 1s ease;
+        }
+
+        .bg-hearts { position: absolute; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .bg-hearts span { position: absolute; font-size: 24px; animation: floatUp 6s linear infinite; opacity: 0; }
+        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0.5); opacity: 0.7; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
+        
+        .sunflower { position: absolute; font-size: 35px; animation: fallDown linear forwards; z-index: 999; pointer-events: none; }
+        @keyframes fallDown { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            box-shadow: 0 15px 35px rgba(255, 136, 170, 0.3);
+            padding: 25px; 
+            width: 85%; 
+            max-width: 400px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 10;
+            transition: all 0.5s ease; 
+            max-height: 85vh; 
+            overflow-y: auto;
+        }
+        .glass-panel::-webkit-scrollbar { display: none; }
+        .hidden { display: none !important; }
+        .fade-in { animation: fadeIn 0.6s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        h1, h2 { font-family: 'Caveat', cursive; color: #d6336c; margin-bottom: 10px; font-size: 38px; line-height: 1.1; }
+        p { font-size: 15px; line-height: 1.5; font-weight: 700;}
+        
+        .haya-text { color: #ff4757; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px;}
+        .letter-text { text-align: left; font-size: 15px; background: rgba(255,255,255,0.7); padding: 18px; border-radius: 12px; margin-bottom: 15px; font-weight: 700; max-height: 250px; overflow-y: auto; line-height: 1.6;}
+
+        input[type="text"], input[type="date"], textarea {
+            width: 80%; padding: 12px; margin: 10px 0; border: 2px solid #ffb3c6; border-radius: 12px;
+            font-family: 'Nunito', sans-serif; font-size: 15px; text-align: center; font-weight: 700; box-sizing: border-box;
+        }
+        input:focus, textarea:focus { outline: none; border-color: #d6336c; }
+        input[type="range"] { -webkit-appearance: none; width: 90%; height: 15px; border-radius: 10px; background: #ffe6ea; outline: none; margin: 20px 0; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 30px; height: 30px; border-radius: 50%; background: #d6336c; cursor: pointer; box-shadow: 0 0 10px rgba(214,51,108,0.5); }
+
+        .btn-option {
+            background: #fff; color: #d6336c; border: 2px solid #ffb3c6; padding: 12px; border-radius: 15px;
+            font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.2s ease; margin: 6px; width: 95%;
+            -webkit-tap-highlight-color: transparent; box-shadow: 0 4px 6px rgba(0,0,0,0.05); font-family: 'Nunito', sans-serif;
+        }
+        .btn-option:active { transform: scale(0.95); background: #ffe6ea; }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #d6336c, #ff6b81); color: white; border: none; padding: 12px 20px;
+            border-radius: 25px; font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.3s;
+            margin-top: 15px; width: 90%; box-shadow: 0 4px 15px rgba(214, 51, 108, 0.4); -webkit-tap-highlight-color: transparent; font-family: 'Nunito', sans-serif;
+        }
+        .heartbeat-btn { animation: heartbeat 1.2s infinite; }
+        @keyframes heartbeat { 0% { transform: scale(1); } 20% { transform: scale(1.08); } 40% { transform: scale(1); } 60% { transform: scale(1.08); } 80% { transform: scale(1); } }
+
+        .proceed-container { height: 100px; position: relative; margin-top: 15px; width: 100%; }
+        .haya-btn {
+            background: linear-gradient(45deg, #f093fb, #f5576c); color: white; border: none; padding: 10px 20px;
+            border-radius: 20px; font-size: 14px; font-weight: 800; cursor: pointer; transition: all 0.15s ease;
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+            white-space: nowrap; -webkit-tap-highlight-color: transparent; font-family: 'Nunito', sans-serif;
+        }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: flex; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 25px; border-radius: 20px; text-align: center; max-width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+        .shatter { animation: shake 0.4s ease-in-out; filter: blur(2px); }
+        .shake-hard { animation: shake 0.3s infinite; background: #ff4757 !important; color: white !important; }
+        .flip-upside { transform: rotate(180deg) scale(0.9); }
+        .fade-out { opacity: 0; pointer-events: none; }
+        
+        .grayscale-locked { filter: grayscale(100%) brightness(85%) !important; transition: filter 1s ease; }
+        
+        .blur-text { filter: blur(8px); transition: filter 0.3s ease; user-select: none; font-size: 18px; padding: 20px; background: #ffe6ea; border-radius: 10px; margin-bottom: 10px;}
+        .blur-text:active, .blur-text:hover { filter: blur(0px); }
+        
+        .red-btn { background: #ff3838; color: white; border: 4px solid #c0392b; width: 120px; height: 120px; border-radius: 50%; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 10px 0 #c0392b; transition: all 0.1s; margin: 20px auto; display: flex; align-items: center; justify-content: center;}
+        .red-btn:active { transform: translateY(10px); box-shadow: 0 0 0 #c0392b; }
+        
+        .foggy-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 50; display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 1; transition: opacity 0.2s;}
+        .flying-kiss { position: absolute; font-size: 40px; cursor: pointer; transition: all 0.5s linear; -webkit-tap-highlight-color: transparent;}
+        .exploding-yes { position: fixed; background: #2ed573; color: white; border-radius: 15px; padding: 10px 20px; font-weight: bold; font-family: 'Nunito', sans-serif; z-index: 500; border: none; box-shadow: 0 4px 10px rgba(46, 213, 115, 0.4); pointer-events: none;}
+        
+        .love-bomb { position: fixed; background: white; border: 2px solid #ff4757; border-radius: 15px; padding: 15px; box-shadow: 0 10px 25px rgba(255,71,87,0.4); z-index: 2000; font-weight: 900; color: #ff4757; font-family: 'Nunito', sans-serif; text-align: center; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; -webkit-tap-highlight-color: transparent;}
+        @keyframes popIn { 0% {transform: scale(0);} 100% {transform: scale(1);} }
+        @keyframes shake { 0%{transform:translate(2px,2px);} 25%{transform:translate(-3px,0);} 50%{transform:translate(2px,-2px);} 75%{transform:translate(-3px,2px);} 100%{transform:translate(2px,2px);} }
+        
+        .battery-prank { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; background: rgba(255,255,255,0.95); border-radius: 20px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 200; transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .battery-prank.show { top: 20px; }
+        
+        .bsod { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0078D7; color: white; z-index: 300; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: monospace; text-align: left; padding: 20px; box-sizing: border-box; }
+        
+        .loading-bar { width: 100%; height: 25px; background: #ffe6ea; border-radius: 12px; margin-top: 20px; overflow: hidden; border: 1px solid #ffb3c6; position: relative;}
+        .loading-fill { height: 100%; background: linear-gradient(90deg, #ff9a9e, #fecfef, #d6336c); width: 0%; transition: width 0.1s; }
+        
+        .huge-heart { font-size: 90px; cursor: pointer; user-select: none; touch-action: none; -webkit-tap-highlight-color: transparent; transition: transform 0.05s; display: inline-block; margin: 15px; }
+        .huge-heart:active { transform: scale(0.8); }
+        
+        .tictactoe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; width: 200px; margin: 15px auto; }
+        .cell { background: #ffe6ea; height: 60px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: #d6336c; cursor: pointer; }
+        
+        .fingerprint { font-size: 60px; margin: 20px; display: inline-block; border-radius: 50%; padding: 20px; background: rgba(255,255,255,0.5); box-shadow: 0 0 15px rgba(214, 51, 108, 0.2); transition: all 0.3s; user-select: none; touch-action: none; -webkit-tap-highlight-color: transparent;}
+        .fingerprint:active { transform: scale(0.9); box-shadow: inset 0 0 20px rgba(214, 51, 108, 0.5); background: #ffb3c6; }
+        
+        .dodging-check-container { position: relative; width: 30px; height: 30px; display: inline-block; transition: transform 0.15s ease; }
+    </style>
+</head>
+<body id="mainBody">
+
+    <div class="bg-hearts" id="bgHearts"></div>
+
+    <div id="batteryNotif" class="battery-prank hidden" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 350px; background: rgba(255,255,255,0.95); border-radius: 20px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 200; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+        <span style="color: red; font-size: 24px; margin-right: 10px;">🔋</span> 
+        <span id="batteryText">1% Battery Remaining. Shutting down...</span>
+    </div>
+
+    <div id="bsodScreen" class="bsod hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0078D7; color: white; z-index: 300; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: monospace; text-align: left; padding: 20px; box-sizing: border-box;">
+        <h1 style="font-size: 60px; margin: 0; color: white;">:(</h1>
+        <p style="font-size: 16px; font-weight: normal; line-height: 1.4;">CRITICAL ERROR: AALOO_OVERLOAD<br><br>Haya AI has crashed. Too much cuteness detected.<br><br>Rebooting Harsh's Love Protocol...</p>
+    </div>
+
+    <div id="step1" class="glass-panel fade-in">
+        <p class="haya-text">System Haya Online</p>
+        <h1>Hello, My Aaloo 🥔❤️</h1>
+        <p>I am <b>Haya</b>. Harsh built me to test you before I give you his surprise.</p>
+        <p>What is the exact date you told him you loved him early in the morning?</p>
+        <input type="date" id="magicDate">
+        <button class="btn-primary" onclick="checkDate()">Verify Identity 🔓</button>
+    </div>
+
+    <div id="stepFakeLoad" class="glass-panel hidden">
+        <p class="haya-text">Haya Processing</p>
+        <h2>Scanning Aaloo... 🥔</h2>
+        <p id="loadText">Checking attitude levels...</p>
+        <div class="loading-bar"><div class="loading-fill" id="loadFill" style="transition: width 0.3s;"></div></div>
+    </div>
+
+    <div id="stepCaptcha" class="glass-panel hidden">
+        <p class="haya-text">Haya Captcha</p>
+        <h2>Are you human? 🤖</h2>
+        <p>Select the option that contains: <b>Your Future Husband</b></p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <button class="btn-option" style="width: 100%; margin:0;" onclick="failCaptcha()">A Pizza 🍕</button>
+            <button class="btn-option" style="width: 100%; margin:0;" onclick="passCaptcha()">Harsh ❤️</button>
+            <button class="btn-option" style="width: 100%; margin:0;" onclick="failCaptcha()">Aaloo 🥔</button>
+            <button class="btn-option" style="width: 100%; margin:0;" onclick="failCaptcha()">A Panda 🐼</button>
+        </div>
+    </div>
+
+    <div id="stepTerms" class="glass-panel hidden">
+        <p class="haya-text">Legal Binding</p>
+        <h2>Terms & Conditions 📜</h2>
+        <p style="font-size: 13px; text-align: left; background: #ffe6ea; padding: 10px; border-radius: 10px; height: 80px; overflow-y: auto;">
+            By checking the box below, you agree that Harsh is always right, Harsh is the cutest, and you owe Harsh infinite hugs forever.
+        </p>
+        
+        <!-- UPGRADED CHECKBOX SHIELD FOR MOBILE DODGING -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; position: relative; height: 40px;">
+            <div class="dodging-check-container" id="checkContainer" style="position: relative;">
+                <div id="checkShield" style="position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px; z-index: 5;" ontouchstart="dodgeCheckbox(event)" onmousedown="dodgeCheckbox(event)"></div>
+                <input type="checkbox" id="termsCheck" style="width: 25px; height: 25px; margin:0; cursor: pointer;">
+            </div>
+            <label style="font-weight: bold;">I agree to all of the above.</label>
+        </div>
+        
+        <button class="btn-primary" onclick="checkTerms()">Accept</button>
+    </div>
+
+    <div id="stepPassword" class="glass-panel hidden">
+        <p class="haya-text">Security Vault</p>
+        <h2>Password Required 🔒</h2>
+        <p>What is the password to Harsh's heart?</p>
+        <p style="font-size: 12px; color: #888;">Hint: It's his favorite, cutest vegetable.</p>
+        <input type="text" id="heartPass" placeholder="Enter password...">
+        <button class="btn-primary" onclick="checkPassword()">Unlock</button>
+    </div>
+
+    <div id="step2" class="glass-panel hidden">
+        <p class="haya-text">Question 1</p>
+        <h2>The Prettiest Girl 🌸</h2>
+        <p>Who is the prettiest girl Harsh has ever seen?</p>
+        <button class="btn-option" onclick="qPrettiest('Suhani')">A. Suhani</button>
+        <button class="btn-option" onclick="qPrettiest('Gauri')">B. Gauri Mishra</button>
+        <button class="btn-option" onclick="qPrettiest('Chandni')">C. Chandni</button>
+        <button class="btn-option" onclick="qPrettiest('Sadhvi')">D. Sadhvi</button>
+    </div>
+
+    <div id="fogScreen" class="foggy-screen hidden">
+        <h1 style="font-size: 50px;">🌫️</h1>
+        <h2 style="font-family: 'Nunito', sans-serif;">Screen Fogged Up!</h2>
+        <p>Too much romance! Tap repeatedly to wipe the fog!</p>
+        <button class="btn-primary" style="width: 200px;" ontouchstart="wipeFog(event)" onmousedown="wipeFog(event)">Wipe Screen 🖐️</button>
+    </div>
+
+    <div id="stepAutocorrect" class="glass-panel hidden">
+        <p class="haya-text">Haya Security Check</p>
+        <h2>Wait a minute... 🤔</h2>
+        <p>Type <b>"I am a cute Aaloo"</b> exactly as written below to proceed.</p>
+        <input type="text" id="autoInput" oninput="checkAutocorrect()" placeholder="Type it here...">
+        <p id="autoMsg" style="color: red; font-size: 12px; height: 15px; font-weight: bold;"></p>
+        <button class="btn-primary" onclick="verifyAutocorrect()">Submit</button>
+    </div>
+
+    <div id="stepCall" class="glass-panel hidden" style="background: #1e272e; color: white;">
+        <p style="color: #4cd137; font-weight: bold; margin: 0;">Incoming Call...</p>
+        <h1 style="color: white;">Harsh ❤️</h1>
+        <p style="color: #888;">Mobile</p>
+        <div style="display: flex; justify-content: space-around; margin-top: 30px;">
+            <button style="background: #ff4757; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-family: 'Nunito';" onmouseover="runAway(this)" ontouchstart="runAway(this)">Decline</button>
+            <button style="background: #2ed573; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-family: 'Nunito';" onclick="acceptCall()">Accept</button>
+        </div>
+    </div>
+
+    <div id="step3" class="glass-panel hidden">
+        <p class="haya-text">Question 2</p>
+        <h2>Private Time 🙈</h2>
+        <p>What do you want to do with him privately?</p>
+        <button class="btn-option" onclick="actionPrivate('pitti', this)">A. Pitti pitti</button>
+        <button class="btn-option" onclick="actionPrivate('hug', this)">B. Tight hug</button>
+        <button class="btn-option" onclick="actionPrivate('kissy', this)">C. Kissy</button>
+        <button class="btn-option" onclick="actionPrivate('nothing', this)">D. Nothing</button>
+        
+        <div id="proceed3" class="hidden proceed-container">
+            <button class="haya-btn" data-dodges="0" onmouseover="moveHaya(event, this)" ontouchstart="moveHaya(event, this)" onclick="nextStep(3, 'RPS')">Catch Me If You Can 😝</button>
+        </div>
+    </div>
+
+    <div id="stepRPS" class="glass-panel hidden">
+        <p class="haya-text">Haya Mini Boss</p>
+        <h2>Hold on! ✋</h2>
+        <p>Haya is bored. Beat me in Rock, Paper, Scissors to continue!</p>
+        <h1 id="rpsResult" style="font-size: 40px; margin: 10px;">🤖 vs 🥔</h1>
+        <button class="btn-option" onclick="playRPS('Rock')">✊ Rock</button>
+        <button class="btn-option" onclick="playRPS('Paper')">🖐 Paper</button>
+        <button class="btn-option" onclick="playRPS('Scissors')">✌️ Scissors</button>
+        <div id="proceedRPS" class="hidden proceed-container">
+            <button class="btn-primary" onclick="nextStep('RPS', 'Slider')">Fine, proceed 🙄</button>
+        </div>
+    </div>
+
+    <div id="stepSlider" class="glass-panel hidden">
+        <p class="haya-text">Haya Analytics</p>
+        <h2>Rate Your Cuteness 🥺</h2>
+        <p>Slide to tell me how cute you look right now.</p>
+        <input type="range" id="cutenessSlider" min="1" max="100" value="10" oninput="forceMaxCuteness(this)">
+        <p id="sliderMsg" style="color: #d6336c; font-weight: bold;">Be honest...</p>
+        <div id="proceedSlider" class="hidden proceed-container">
+            <button class="haya-btn" data-dodges="0" onmouseover="moveHaya(event, this)" ontouchstart="moveHaya(event, this)" onclick="nextStep('Slider', 'Nickname')">Ugh, Fine. Proceed. 🙄</button>
+        </div>
+    </div>
+
+    <div id="stepNickname" class="glass-panel hidden">
+        <p class="haya-text">Sweetness Check</p>
+        <h2>Identity Protocol 🍮</h2>
+        <p>Aaloo is his cute name for you. But what do you call HIM when he's looking extra sweet?</p>
+        <p style="font-size: 12px; color: #888;">(Hint: A very sweet, round Indian dessert!)</p>
+        <input type="text" id="nicknameInput" placeholder="Enter nickname...">
+        <button class="btn-primary" onclick="checkNickname()">Verify Sweetness</button>
+    </div>
+
+    <div id="stepMath" class="glass-panel hidden">
+        <p class="haya-text">Logic Protocol</p>
+        <h2>Prove You're Human 🧮</h2>
+        <p>Solve this highly complex mathematical equation:<br><br><b>1 + 1 = ?</b></p>
+        <button class="btn-option" onclick="actionMath('2')">A. 2</button>
+        <button class="btn-option" onclick="actionMath('11')">B. 11</button>
+        <button class="btn-option" onclick="actionMath('us')">C. Us ❤️</button>
+    </div>
+
+    <div id="stepFood" class="glass-panel hidden">
+        <p class="haya-text">Visual Glitch</p>
+        <h2>My Eyes Are Blurry! 😵‍💫</h2>
+        <p>Rub or press the blurry box below to clear my vision!</p>
+        <div class="blur-text" ontouchstart="this.style.filter='blur(0)'" onmouseover="this.style.filter='blur(0)'">
+            <b>Question:</b> What is Harsh's absolute favorite snack in the world?
+        </div>
+        <button class="btn-option" onclick="actionFood('chips')">A. Chips</button>
+        <button class="btn-option" onclick="actionFood('pizza')">B. Pizza</button>
+        <button class="btn-option" onclick="actionFood('aaloo')">C. My Aaloo 🥔</button>
+    </div>
+
+    <div id="stepFlyingKiss" class="glass-panel hidden">
+        <p class="haya-text">Agility Test</p>
+        <h2>Catch the Kiss! 😘</h2>
+        <p>Tap the flying kiss to proceed!</p>
+        <div id="kissEmoji" class="flying-kiss" ontouchstart="catchKiss(event)" onmousedown="catchKiss(event)">💋</div>
+        <div style="height: 100px;"></div>
+    </div>
+
+    <div id="step4" class="glass-panel hidden">
+        <p class="haya-text">Question 3</p>
+        <h2>Safe Space 🏠</h2>
+        <p>What is the safest and most peaceful place in the whole world for my Aaloo?</p>
+        <button class="btn-option" onclick="actionSafe('home', this)">A. In her home</button>
+        <button class="btn-option" onclick="actionSafe('me', this)">B. With me (Harsh)</button>
+        <button class="btn-option" onclick="actionSafe('mandir', this)">C. Kanha ji ka mandir</button>
+        <button class="btn-option" onclick="actionSafe('arms', this)">D. In my arms</button>
+    </div>
+
+    <div id="stepRedBtn" class="glass-panel hidden">
+        <p class="haya-text">Haya's Rules</p>
+        <h2>Forbidden Action 🛑</h2>
+        <p>Whatever you do, absolutely DO NOT press this red button.</p>
+        <div class="red-btn" ontouchstart="actionRedBtn(event)" onmousedown="actionRedBtn(event)">PRESS</div>
+    </div>
+
+    <div id="stepColor" class="glass-panel hidden">
+        <p class="haya-text">Brain Teaser</p>
+        <h2>Mind Games 🧠</h2>
+        <p>Tap the button that says <b>GREEN</b></p>
+        <button class="btn-option" style="background: #ff4757; color: white;" onclick="failColor()">BLUE</button>
+        <button class="btn-option" style="background: #2ed573; color: white;" onclick="passColor()">RED</button>
+        <button class="btn-option" style="background: #1e90ff; color: white;" onclick="failColor()">GREEN</button>
+    </div>
+
+    <div id="stepLoveBomb" class="glass-panel hidden">
+        <p class="haya-text">Warning ⚠️</p>
+        <h2>Incoming Attack 💣</h2>
+        <p>Harsh has initiated a massive Love Bomb! Brace yourself!</p>
+        <button class="btn-primary" onclick="startLoveBomb()">Bring it on! 🛡️</button>
+    </div>
+
+    <div id="step5" class="glass-panel hidden">
+        <p class="haya-text">Question 4</p>
+        <h2>Drama Alert 🎭</h2>
+        <p>Let's be honest, who is the biggest "Nautanki" in our relationship?</p>
+        <button class="btn-option" ontouchstart="runAway(this)" onmouseover="runAway(this)">A. Me (Harsh, the innocent boy)</button>
+        <button class="btn-option" ontouchstart="runAway(this)" onmouseover="runAway(this)">B. Definitely me (Harsh), 100%</button>
+        <button class="btn-option" onclick="actionNautanki()">C. My cute little Aaloo</button>
+        <button class="btn-option" onclick="tAdd('nautanki', 'Both'); showModal('Haha, maybe! But you definitely wear the drama crown! 👑😉', null)">D. We both are equally dramatic</button>
+    </div>
+
+    <div id="stepTap" class="glass-panel hidden">
+        <p class="haya-text">Haya Challenge</p>
+        <h2>Prove Your Love! ❤️</h2>
+        <p>Tap the heart rapidly to fill the meter to 100% before it drains! Go!</p>
+        <div class="huge-heart" id="tapHeartBtn" ontouchstart="tapHeart(event)" onmousedown="tapHeart(event)">❤️</div>
+        <div class="loading-bar"><div class="loading-fill" id="tapFill" style="transition: width 0.1s;"></div></div>
+        <p id="tapMsg" style="font-size: 15px; margin-top: 10px; color: #d6336c; font-weight: bold;">Meter: 0% - Start Tapping!</p>
+        <div id="proceedTap" class="hidden proceed-container">
+            <button class="haya-btn" data-dodges="0" onmouseover="moveHaya(event, this)" ontouchstart="moveHaya(event, this)" onclick="nextStep('Tap', 'Camera')">Wow. You really love him. 🥰</button>
+        </div>
+    </div>
+
+    <div id="stepCamera" class="glass-panel hidden">
+        <p class="haya-text">System Request</p>
+        <h2>Camera Access 📸</h2>
+        <p>https://haya.ai wants to use your camera to see if you are smiling.</p>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <button class="btn-option" style="width: 45%;" onclick="actionCamera()">Block</button>
+            <button class="btn-primary" style="width: 45%; margin-top: 6px;" onclick="actionCamera()">Allow</button>
+        </div>
+    </div>
+
+    <div id="stepCharm" class="glass-panel hidden">
+        <p class="haya-text">Question 5</p>
+        <h2>The Magic Charm ✨</h2>
+        <p>When he is upset or stressed, what magic thing do you do that instantly melts his heart?</p>
+        <button class="btn-option" onclick="actionCharm('Scolding')">A. Scolding him like a strict teacher</button>
+        <button class="btn-option" onclick="actionCharm('Ignoring')">B. Ignoring him</button>
+        <button class="btn-option" onclick="actionCharm('Gift')">C. Buying him a gift</button>
+        <button class="btn-option" onclick="actionCharm('Smile')">D. Just showing your beautiful smile</button>
+        <div id="proceedCharm" class="hidden proceed-container">
+            <button class="haya-btn" data-dodges="0" onmouseover="moveHaya(event, this)" ontouchstart="moveHaya(event, this)" onclick="nextStep('Charm', 'Mic')">Try to catch me! 😝</button>
+        </div>
+    </div>
+
+    <div id="stepMic" class="glass-panel hidden">
+        <p class="haya-text">Haya Voice Protocol</p>
+        <h2>Voice Verification 🎙️</h2>
+        <p>Tap and hold the mic, and say <b>"I love you Harsh"</b> out loud to prove you aren't a robot.</p>
+        <button class="mic-btn" id="micBtn" style="width: 80px; height: 80px; border-radius: 50%; background: #ff4757; color: white; font-size: 30px; border: none; box-shadow: 0 0 15px rgba(255, 71, 87, 0.6); margin-top: 20px;" ontouchstart="micStart(event)" ontouchend="micEnd(event)" onmousedown="micStart(event)" onmouseup="micEnd(event)">🎤</button>
+        <p id="micText" style="margin-top: 15px; color: #888;">Waiting for voice...</p>
+    </div>
+
+    <div id="step7" class="glass-panel hidden">
+        <p class="haya-text">Question 6</p>
+        <h2>The Future Dream 💭</h2>
+        <p>What is his absolute biggest dream for your future together?</p>
+        <button class="btn-option" onclick="tAdd('dream', 'Billionaire'); showModal('Money comes and goes, but his real dream is way more precious! 💖')">A. Becoming a billionaire</button>
+        <button class="btn-option" onclick="tAdd('dream', 'Mansion'); showModal('A mansion is just empty rooms without you laughing in it! 🥺')">B. Buying a massive mansion</button>
+        <button class="btn-option" onclick="tAdd('dream', 'Lottery'); showModal('He won the lottery the second you said you loved him! ✨')">C. Winning the lottery</button>
+        <button class="btn-option" onclick="actionDream()">D. Loving you more than yesterday, every single day</button>
+    </div>
+
+    <div id="step8" class="glass-panel hidden">
+        <p class="haya-text">Question 7</p>
+        <h2>Why The Stares? 👀</h2>
+        <p>Why does he stare at you so much when you are talking?</p>
+        <button class="btn-option" onclick="actionStareFakeOut()">A. Because he zones out</button>
+        <button class="btn-option" onclick="tAdd('stare', 'Sleepy'); showModal('Never! Your voice is his favorite melody! 🎶')">B. Because he is sleepy</button>
+        <button class="btn-option" onclick="tAdd('stare', 'Read Mind'); showModal('He wishes he could, but his brain isn\'t that smart! 🧠✨')">C. Trying to read your mind</button>
+        <button class="btn-option" onclick="actionStareCorrect()">D. Because he gets completely lost in your eyes</button>
+    </div>
+
+    <div id="stepGame2" class="glass-panel hidden">
+        <p class="haya-text">Haya Boss Fight</p>
+        <h2>Final Security Wall ❌⭕</h2>
+        <p>Defeat Haya in Tic-Tac-Toe to proceed.</p>
+        <div class="tictactoe" id="tttBoard">
+            <div class="cell" onclick="playTTT(0, this)"></div><div class="cell" onclick="playTTT(1, this)"></div><div class="cell" onclick="playTTT(2, this)"></div>
+            <div class="cell" onclick="playTTT(3, this)"></div><div class="cell" onclick="playTTT(4, this)"></div><div class="cell" onclick="playTTT(5, this)"></div>
+            <div class="cell" onclick="playTTT(6, this)"></div><div class="cell" onclick="playTTT(7, this)"></div><div class="cell" onclick="playTTT(8, this)"></div>
+        </div>
+        <p id="tttMsg" style="color: #d6336c;"></p>
+        <div id="bribeZone" class="hidden" style="margin-top: 15px; padding: 15px; border: 2px dashed #ff4757; border-radius: 15px;">
+            <p style="color: #ff4757; font-weight: 900; font-size: 13px;">HAYA: "You can't pass unless you bribe me on Harsh's behalf."</p>
+            <button class="btn-primary" onclick="acceptBribe()" style="font-size: 13px;">Accept: Owe Harsh 100 kisses 😘</button>
+            <button class="btn-option" style="border-color: #ff4757; color: #ff4757;" ontouchstart="runAway(this)" onmouseover="runAway(this)">Refuse (Stuck forever)</button>
+        </div>
+    </div>
+
+    <div id="stepPushSlider" class="glass-panel hidden">
+        <p class="haya-text">Strength Test</p>
+        <h2>Push Through The Hate 🛡️</h2>
+        <p>Haya is trying to stop you! Drag the slider to 100%, but I will fight back!</p>
+        <input type="range" id="fightSlider" min="1" max="100" value="10" ontouchstart="startFight()" onmousedown="startFight()">
+        <p style="font-size: 12px; color: #888;">Slide it all the way to the right and hold it!</p>
+    </div>
+
+    <div id="stepSpeed" class="glass-panel hidden">
+        <p class="haya-text">Adrenaline Test</p>
+        <h2>Speed Challenge! ⏱️</h2>
+        <p>Type <b>"I love my gulab jamun"</b> before the timer runs out!</p>
+        <h1 id="speedTimer" style="font-size: 45px; color: red; font-family: 'Nunito'; margin: 10px;">10.0</h1>
+        <input type="text" id="speedInput" oninput="checkSpeed()" placeholder="Hurry up!!">
+        <p id="speedMsg" style="color: #d6336c; font-weight: bold;"></p>
+        <button id="proceedSpeed" class="btn-primary hidden" onclick="nextStep('Speed', 'Handsome')">Phew! Next 🥵</button>
+    </div>
+
+    <div id="stepHandsome" class="glass-panel hidden">
+        <p class="haya-text">The Truth Test</p>
+        <h2>Is Harsh Handsome? 😎</h2>
+        <button class="btn-primary" onclick="actionHandsomeYes()">Yes, very! 😍</button>
+        <button class="btn-option" onclick="actionHandsomeNo()">No</button>
+    </div>
+
+    <div id="step9" class="glass-panel hidden">
+        <p class="haya-text">Memory Vault</p>
+        <h2>Our Memory 💭</h2>
+        <p>Tell me our one most special moment when you felt highly romantic with me...</p>
+        <textarea id="specialMomentText" placeholder="Type your memory here..."></textarea>
+        <button class="btn-primary" onclick="saveMoment()">Save & Continue ❤️</button>
+    </div>
+
+    <div id="step10" class="glass-panel hidden">
+        <p class="haya-text">Evidence 1</p>
+        <h2>Prove it's Us 📸</h2>
+        <p>Upload a favorite photo of us (or just you looking cute) to continue.</p>
+        <div style="position: relative; width: 90%; margin: 0 auto;">
+            <div id="uploadText1" style="background: #fff; color: #d6336c; border: 2px dashed #d6336c; padding: 15px; border-radius: 15px; font-weight: 800;">Tap to Select Photo 📁</div>
+            <input type="file" accept="image/*" onchange="handlePhoto1()" style="opacity: 0; position: absolute; top: 0; left: 0; height: 100%; width: 100%;">
+        </div>
+    </div>
+
+    <div id="step11" class="glass-panel hidden">
+        <p class="haya-text">Evidence 2</p>
+        <h2>The Embarrassing Pic 🫣</h2>
+        <p>Upload one photo of us that you secretly think is embarrassing and want to DELETE forever.</p>
+        <div style="position: relative; width: 90%; margin: 0 auto;">
+            <div id="uploadText2" style="background: #fff; color: #5a3e46; border: 2px dashed #5a3e46; padding: 15px; border-radius: 15px; font-weight: 800;">Tap to Select Photo to Delete 🗑️</div>
+            <input type="file" accept="image/*" onchange="handlePhoto2()" style="opacity: 0; position: absolute; top: 0; left: 0; height: 100%; width: 100%;">
+        </div>
+    </div>
+
+    <div id="step12" class="glass-panel hidden">
+        <p class="haya-text">Haya Polygraph</p>
+        <h2>Lie Detector 🕵️‍♀️</h2>
+        <p>Read this out loud: <br><b>"I am not smiling or blushing right now."</b></p>
+        <p>Hold your thumb on the scanner for 3 seconds to verify.</p>
+        <div class="fingerprint" id="fingerprint" ontouchstart="startScan(event)" ontouchend="stopScan(event)" onmousedown="startScan(event)" onmouseup="stopScan(event)">👍</div>
+        <p id="scanText" style="color: #888;">Waiting for scan...</p>
+    </div>
+
+    <div id="step13" class="glass-panel hidden" style="max-height: 90vh;">
+        <h2>Meri Pyaari Aaloo 🥔❤️</h2>
+        <div class="letter-text">
+            <p>Hie meri pyaari aaloo, yrr aap itni pyaari aur itni acchi ho matt pucho yrr aap bas has do to mera din ban jaye kabhi nahi socha tha itna pyaara ho jayega koi mere liye aapse hi subah aapse hi sham haste khelte aapke sath pta nhi lga kab itni special ho gyi aap mere liye and I hope apko ye pasand aya hoga ye maine apne dilse apne dil k liye banaya h.</p>
+            <p>Ik hamare bich kaafi kuch thik nhi hua inn mahino se aapko doubt aya hamare rishte pe aise kabhi mtt laiyega yrr dilse karo aap mtt socho kisi ka aapki soch apke hisab se evolve hogi dusro k hisab se nhi i am nonchalant and simple but you loved that simple guy by your heart not by my looks it was never attraction aapko aise kyu lga vo mai janta hu but aisa nhi h iss pagli ko pyaar ho gya bas andar ka dar aur bahar ka pressure usko feel nhi krne de rha but cutu...</p>
+            <p>We fell for each other after knowing nature yrr and we will change time by time but all ik you love me and i love you rest doesn't matter aap itni acchi ho ki mai aapse seekhta hu jindagi kaise jeete h let's live for each other yrr kehne se nhi dilse and vo sb kariye jo aap karna chahti thi sath ghumna khana peena khelna pyaar krna aur thoda romantic touches krna because school me hamne kiya h ye aur vo special h ham vo din yaad karte h na kitna khush rehte h.</p>
+            <p>Ik college me classes h aur baki new chije aayi h jisse busy hue h but ham ekdusre ko dilse time denge to vo hame burden nhi lagega let's change our form of love ham ekdusre ko hasane ka try karenge ekdusre k liye dilse chije karenge abhi hamare andar dar aa gya h yrr to vo krne me easy nhi lg rha but let's forget everything just remember our love moments and hamari ID pe hamari photo k caption, story , and hamare gifts dekhiye how special those are...</p>
+            <p>In the rush we can't loose our real love yrr it's like a plant we will grow it like our baby ... I am sorry for everything yrr but let's start a new phase just share your pure love trust and faith like you did before ,life changes and the things we like also changes but let's not compromise in love let's change and notice changes and improve each other with those we're on the same side baby i don't expect any thing just love it's the only thing i want to continue till my life just by enjoying it with you...</p>
+            <p>Lets do whatever we want to do together lets create boundaries for problems not between us becuase we know each other just treat me like you want nothing is cringe and all that between us i like everything you say ......Give me your hand my princess if you agree and we'll each one fav of all time rest can be changed....</p>
+            <p>Ik this became a lecture but i just want to tell you I am all yours forever.</p>
+        </div>
+        <button class="btn-primary heartbeat-btn" onclick="triggerFinale('Yes forever')">Yes forever ❤️</button>
+        <button id="hesitateBtn" class="btn-primary" style="background: #999; margin-top: 10px; transition: all 1s ease;" onclick="actionHesitate(this)">I hesitate.. 🥺</button>
+    </div>
+
+    <!-- NEW ROMANTIC HAND HOLDING SEGMENT -->
+    <div id="stepHand" class="glass-panel hidden">
+        <p class="haya-text">Final Moment</p>
+        <h2>My Hand in Yours 🤝</h2>
+        <p style="font-size: 16px; font-weight: bold; color: #5a3e46; font-style: italic;">"Harsh gently reaches out his hand towards you..."</p>
+        <p>What will you do?</p>
+        <button class="btn-primary heartbeat-btn" onclick="actionHand('Hold')">Hold his hand forever ❤️</button>
+        <button class="btn-option" onclick="actionHand('Hate')">Push it away 💔</button>
+    </div>
+
+    <div id="step14" class="glass-panel hidden">
+        <h1 id="finalQuote"></h1>
+        <p>Send your Top Secret Haya Report and Photos to Harsh! 💌</p>
+        <button class="btn-primary" onclick="sendToEmail()">Send to Harsh 🚀</button>
+    </div>
+
+    <div id="customModal" class="modal-overlay hidden">
+        <div class="modal-content" id="modalBox">
+            <h2 id="modalText" style="font-size: 18px; color: #d6336c; line-height: 1.4; font-family: 'Nunito', sans-serif;"></h2>
+            <button id="modalBtn" class="btn-primary" onclick="playSound('click'); closeModal()">Okay ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        let tracking = { pretty: [], private: [], safe: [], nautanki: [], charm: [], dream: [], stare: [] };
+        let tracker = { dodgesCaught: 0, termsDodges: 0, autoFails: 0, memory: '', bribe: '100 Kisses 😘', lieDetector: 'FAILED (Was definitely blushing)', finalChoice: '', finalHandChoice: '', hesitateClicks: 0, pranksFallenFor: 0, nickname: '', bombsCleared: 0 };
+        
+        function tAdd(q, val) { tracking[q].push(val); }
+        function formatHistory(q) {
+            if(tracking[q].length === 0) return "No clicks";
+            if(tracking[q].length === 1) return tracking[q][0];
+            return tracking[q].join(" ➔ ");
+        }
+
+        const mainBody = document.getElementById('mainBody');
+
+        let audioCtx;
+        function initAudio() {
+            if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+        }
+        function playSound(type) {
+            if(!audioCtx) return;
+            const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            if(type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1); osc.stop(audioCtx.currentTime + 0.1); } 
+            else if(type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(50, audioCtx.currentTime + 0.5); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.5); osc.stop(audioCtx.currentTime + 0.5); } 
+            else if(type === 'right') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.1, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4); osc.stop(audioCtx.currentTime + 0.4); } 
+            else if(type === 'alarm') { osc.type = 'square'; osc.frequency.setValueAtTime(800, audioCtx.currentTime); osc.frequency.setValueAtTime(1000, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); osc.start(); gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6); osc.stop(audioCtx.currentTime + 0.6); }
+        }
+        document.querySelectorAll('.btn-option, .btn-primary').forEach(btn => { btn.addEventListener('click', () => { if(audioCtx) playSound('click'); }); });
+
+        function nextStep(current, next) {
+            playSound('click'); document.getElementById('step' + current).classList.add('hidden');
+            let nextEl = document.getElementById('step' + next); nextEl.classList.remove('hidden'); nextEl.classList.add('fade-in');
+        }
+        function showModal(text, callback = null, hideButton = false) {
+            document.getElementById('modalText').innerHTML = text; document.getElementById('modalBtn').style.display = hideButton ? 'none' : 'inline-block';
+            document.getElementById('customModal').classList.remove('hidden'); document.getElementById('customModal').callback = callback;
+        }
+        function closeModal() { document.getElementById('customModal').classList.add('hidden'); if(document.getElementById('customModal').callback) document.getElementById('customModal').callback(); }
+        function runAway(btn) { let x = (Math.random() - 0.5) * 150; let y = (Math.random() - 0.5) * 150; btn.style.transform = `translate(${x}px, ${y}px)`; }
+
+        // --- NEW BULLETPROOF CHECKBOX DODGE SYSTEM ---
+        function dodgeCheckbox(e) {
+            e.preventDefault(); // Physically blocks her from tapping the real checkbox below it!
+            playSound('click');
+            tracker.termsDodges++;
+            tracker.dodgesCaught++; 
+            let box = document.getElementById('checkContainer');
+            
+            if(tracker.termsDodges < 4) {
+                // Throws the checkbox wildly away from her finger
+                let x = (Math.random() > 0.5 ? 1 : -1) * (40 + Math.random() * 50);
+                let y = (Math.random() > 0.5 ? 1 : -1) * (20 + Math.random() * 30);
+                box.style.transform = `translate(${x}px, ${y}px)`;
+            } else {
+                // After 4 frustrating taps, give up and let her click it
+                box.style.transform = `translate(0px, 0px)`;
+                document.getElementById('checkShield').style.display = 'none'; // Removes the shield!
+                showModal("HAYA: Ugh, fine! You can check it now. 🙄");
+            }
+        }
+
+        function moveHaya(e, btn) {
+            let dodges = parseInt(btn.getAttribute('data-dodges'));
+            if(dodges < 5) {
+                if(e && e.type === 'touchstart') e.preventDefault();
+                tracker.dodgesCaught++; playSound('click');
+                let x = (Math.random() - 0.5) * 220; let y = (Math.random() - 0.5) * 120; 
+                if (dodges === 2) { btn.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(0.6)`; btn.innerText = "Too slow! 🐢"; } 
+                else if (dodges === 3) { btn.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(0.4)`; btn.innerText = "Almost! 😂"; } 
+                else if (dodges === 4) { btn.style.transform = `translate(-50%, -50%) scale(1)`; btn.innerText = "Okay, okay. Tap me. 🙄"; } 
+                else { btn.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`; }
+                btn.setAttribute('data-dodges', dodges + 1);
+            }
+        }
+
+        function checkDate() {
+            initAudio();
+            if(document.getElementById('magicDate').value === '2024-01-17') {
+                playSound('right'); document.getElementById('step1').classList.add('hidden'); document.getElementById('stepFakeLoad').classList.remove('hidden');
+                let fill = document.getElementById('loadFill'); let text = document.getElementById('loadText');
+                setTimeout(()=>{fill.style.width = '30%'; text.innerText="Analyzing cuteness..."; playSound('click');}, 1000);
+                setTimeout(()=>{fill.style.width = '10%'; text.innerText="Wait... recalibrating 🙄"; playSound('wrong');}, 2500);
+                setTimeout(()=>{fill.style.width = '70%'; text.innerText="Almost there..."; playSound('click');}, 4000);
+                setTimeout(()=>{ fill.style.width = '100%'; text.innerText="Aaloo Confirmed! ✅"; playSound('right'); setTimeout(() => nextStep('FakeLoad', 'Captcha'), 1000); }, 5500);
+            } else { playSound('wrong'); showModal("HAYA: Incorrect date! Try again before I lock you out! 🥺"); }
+        }
+
+        function failCaptcha() { playSound('wrong'); showModal("HAYA: Wrong! That is not your future husband. Try again. 🙄"); tracker.pranksFallenFor++; }
+        function passCaptcha() { playSound('right'); showModal("HAYA: Correct! That handsome boy is yours. 🥰", () => nextStep('Captcha', 'Terms')); }
+
+        function checkTerms() {
+            if(tracker.termsDodges < 4) { playSound('wrong'); showModal("HAYA: Try catching the checkbox first! 😝"); return; }
+            if(document.getElementById('termsCheck').checked) { playSound('right'); nextStep('Terms', 'Password'); } 
+            else { playSound('wrong'); showModal("HAYA: You must agree that Harsh is the boss today! Check the box! 😤"); }
+        }
+
+        function checkPassword() {
+            let pass = document.getElementById('heartPass').value.toLowerCase();
+            if(pass.includes('aaloo') || pass.includes('potato')) { playSound('right'); showModal("Correct! You are the key to his heart. 🥰", () => nextStep('Password', 2)); } 
+            else { playSound('wrong'); showModal("Wrong! Hint: It's what Harsh calls you!"); }
+        }
+
+        function qPrettiest(ans) {
+            tAdd('pretty', ans);
+            let panel = document.getElementById('step2'); panel.classList.add('shatter'); playSound('wrong');
+            setTimeout(() => { showModal("Are you out of your mind?! 😱 Harsh's eyes only work for his Aaloo! I'm Haya and I won't allow this! 😤", () => { panel.classList.remove('shatter'); document.getElementById('fogScreen').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden'); }); }, 600);
+        }
+
+        let fogSwipes = 0;
+        function wipeFog(e) {
+            if(e) e.preventDefault(); playSound('click'); fogSwipes++;
+            document.getElementById('fogScreen').style.opacity = 1 - (fogSwipes * 0.1);
+            if(fogSwipes >= 10) { document.getElementById('fogScreen').classList.add('hidden'); nextStep('2', 'Autocorrect'); }
+        }
+
+        let autoCount = 0;
+        const slipWords = ["nautanki", "kaleshi kavya", "unromantic aaloo", "drama queen", "bhootni", "pagli"];
+        function checkAutocorrect() {
+            let input = document.getElementById('autoInput');
+            if(input.value.toLowerCase().endsWith("cute") && autoCount < slipWords.length) {
+                let slip = slipWords[autoCount];
+                autoCount++; tracker.autoFails++; playSound('wrong');
+                input.value = input.value.slice(0, -4) + slip;
+                document.getElementById('autoMsg').innerText = "Haya: Oops, my keyboard slipped! 🤭"; setTimeout(()=> document.getElementById('autoMsg').innerText = "", 1500);
+            }
+        }
+        function verifyAutocorrect() {
+            if(document.getElementById('autoInput').value.toLowerCase().includes("cute aaloo")) { playSound('right'); showModal("Haya: Security check passed! Harsh already knows you're the cutest! 🥰", () => nextStep('Autocorrect', 'Call')); } 
+            else { playSound('wrong'); showModal("Type it properly! 'I am a cute Aaloo'"); }
+        }
+
+        function acceptCall() { playSound('right'); showModal("HAYA: Call intercepted. Harsh says he loves you. Moving on! 📱❤️", () => nextStep('Call', 3)); }
+
+        function actionPrivate(type, btn) {
+            tAdd('private', type);
+            if(type === 'nothing') { btn.classList.add('fade-out'); playSound('wrong'); setTimeout(() => showModal("HAYA: Excuse me?! So boring! I'm deleting this option for Harsh. 💨"), 500); } 
+            else if (type === 'pitti') { btn.classList.add('shake-hard'); playSound('wrong'); setTimeout(() => { btn.classList.remove('shake-hard'); showModal('Ouchie! 🤕 I am a good boy, I only deserve love! Choose nicely!'); }, 800); } 
+            else if (type === 'hug') { playSound('right'); showModal('Just come here... always waiting for you with open arms. 🤗', () => document.getElementById('proceed3').classList.remove('hidden')); } 
+            else if (type === 'kissy') { playSound('right'); showModal('Bolne se nhi hota, karne se hota h... aao paas 😉😘', () => document.getElementById('proceed3').classList.remove('hidden')); }
+        }
+
+        let rpsPlayed = false;
+        function playRPS(userChoice) {
+            const choices = ['Rock', 'Paper', 'Scissors']; let aiChoice = choices[Math.floor(Math.random() * choices)]; let res = document.getElementById('rpsResult');
+            if(!rpsPlayed) { playSound('wrong'); rpsPlayed = true; aiChoice = userChoice === 'Rock' ? 'Paper' : (userChoice === 'Paper' ? 'Scissors' : 'Rock'); res.innerText = `I chose ${aiChoice}. I WIN! Haha loser 😝 Try again!`; } 
+            else { playSound('right'); res.innerText = `I chose ${userChoice === 'Rock' ? 'Scissors' : 'Rock'}. Fine, you win... this time. 🙄`; document.getElementById('proceedRPS').classList.remove('hidden'); }
+        }
+
+        function forceMaxCuteness(slider) {
+            let val = parseInt(slider.value);
+            if(val < 100) { playSound('wrong'); slider.value = 100; val = 100; document.getElementById('sliderMsg').innerText = "HAYA: For Harsh you are 101% cute! You are off the charts! 📈"; }
+            if(val >= 100 && document.getElementById('proceedSlider').classList.contains('hidden')) { playSound('right'); document.getElementById('sliderMsg').innerText = "HAYA: For Harsh you are 101% cute! You are dangerously cute. 💖"; document.getElementById('proceedSlider').classList.remove('hidden'); }
+        }
+
+        function checkNickname() {
+            let val = document.getElementById('nicknameInput').value.toLowerCase().replace(/\s/g, '');
+            if(val.includes('gulabjamun')) { playSound('right'); tracker.nickname = "Gulab Jamun 🍮"; showModal("HAYA: Aww, Gulab Jamun! That's so sweet my battery just recharged! 🍮❤️", () => nextStep('Nickname', 'Math')); } 
+            else { playSound('wrong'); tracker.pranksFallenFor++; showModal("HAYA: Wrong! Hint: It's a very sweet, round Indian dessert! You call him this! 😤"); }
+        }
+
+        function actionMath(ans) {
+            if(ans === '2') { playSound('wrong'); showModal("HAYA: Wrong! 1+1 = Us! Have some romance in you! 🙄"); tracker.pranksFallenFor++; }
+            else if(ans === '11') { playSound('wrong'); showModal("HAYA: You need a calculator AND romance. Wrong! 😤"); tracker.pranksFallenFor++; }
+            else { playSound('right'); showModal("Correct! You are learning how Harsh's logic works! 🥰", () => nextStep('Math', 'Food')); }
+        }
+
+        function actionFood(ans) {
+            if(ans === 'aaloo') { playSound('right'); showModal("Obviously! He could eat his favorite Aaloo forever! 💖", () => nextStep('Food', 'FlyingKiss')); }
+            else { playSound('wrong'); showModal("Wrong! Read his mind better!"); tracker.pranksFallenFor++; }
+        }
+
+        let kissCaught = false;
+        setInterval(() => { if(!kissCaught && !document.getElementById('stepFlyingKiss').classList.contains('hidden')) { let kiss = document.getElementById('kissEmoji'); kiss.style.left = Math.random() * 80 + '%'; kiss.style.top = Math.random() * 80 + '%'; } }, 800);
+        function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! 💋 You caught it!", () => nextStep('FlyingKiss', 4)); }
+
+        let armsCount = 0;
+        let inArmsChallenge = false;
+        function actionSafe(ans, btn) {
+            tAdd('safe', ans);
+            if(ans === 'home') { 
+                playSound('wrong'); showModal('A house is just bricks, baby! Am I not your real home? 🥺🏠'); 
+            }
+            else if(ans === 'me') { 
+                btn.classList.add('flip-upside'); playSound('wrong'); 
+                setTimeout(() => { btn.classList.remove('flip-upside'); showModal('You are always in my heart, but I meant physically... unless you learned teleportation? 🛸😉'); }, 1000); 
+            }
+            else if(ans === 'mandir') { 
+                playSound('right'); showModal('That is pure peace. Come, let\'s visit together very soon 🙏❤️', () => {
+                    document.getElementById('step4').classList.add('hidden');
+                    let nextEl = document.getElementById('stepRedBtn');
+                    nextEl.classList.remove('hidden');
+                    nextEl.classList.add('fade-in');
+                }); 
+            }
+            else { 
+                playSound('right');
+                inArmsChallenge = true;
+                armsCount = 0;
+                document.getElementById('modalText').innerHTML = "🤗 You want to jump into my arms?<br><b>Tap the button rapidly 10 times to pull me close!</b><br><br>Taps: <span id='armsCounter'>0</span> / 10";
+                let btnElem = document.getElementById('modalBtn');
+                btnElem.innerText = "TAP HUG! 🤗";
+                btnElem.onclick = function() { tapArms(btnElem); };
+                document.getElementById('customModal').classList.remove('hidden');
+            }
+        }
+
+        function tapArms(btnElem) {
+            if(!inArmsChallenge) return;
+            playSound('click');
+            armsCount++;
+            let counterEl = document.getElementById('armsCounter');
+            if(counterEl) counterEl.innerText = armsCount;
+            
+            if(armsCount >= 10) {
+                inArmsChallenge = false;
+                playSound('right');
+                document.getElementById('modalText').innerHTML = "Okay baby, come if you want this that much... 🥰🤗<br><br>(Tightest hug unlocked!)";
+                btnElem.innerText = "Okay ❤️";
+                
+                btnElem.onclick = function() {
+                    playSound('click');
+                    closeModal();
+                    document.getElementById('step4').classList.add('hidden');
+                    document.getElementById('batteryNotif').style.display = 'flex';
+                    document.getElementById('batteryNotif').classList.add('show');
+                    playSound('wrong');
+                    setTimeout(() => { document.getElementById('batteryText').innerText = "Haya Prank! But for real... you are my only spark. ⚡❤️"; playSound('right'); }, 3000);
+                    setTimeout(() => { 
+                        document.getElementById('batteryNotif').classList.remove('show'); 
+                        document.getElementById('batteryNotif').style.display = 'none'; 
+                        let nextEl = document.getElementById('stepRedBtn');
+                        nextEl.classList.remove('hidden');
+                        nextEl.classList.add('fade-in');
+                    }, 5000);
+                    
+                    btnElem.onclick = function() { playSound('click'); closeModal(); };
+                };
+            }
+        }
+
+        function actionRedBtn(e) { 
+            if(e) e.preventDefault(); 
+            playSound('alarm'); 
+            document.getElementById('stepRedBtn').classList.add('hidden');
+            showModal("HAYA: Wow, so rebellious. I said DO NOT press it! ...But honestly, Harsh loves that about you. 😏 Pass.", () => {
+                let nextEl = document.getElementById('stepColor');
+                nextEl.classList.remove('hidden');
+                nextEl.classList.add('fade-in');
+            }); 
+        }
+
+        function failColor() { playSound('wrong'); showModal("HAYA: I said tap the button that SAYS Green, not the green-colored button! Read carefully! 😂"); tracker.pranksFallenFor++; }
+        function passColor() { playSound('right'); showModal("HAYA: Good job! Your brain works! 🧠", () => nextStep('Color', 'LoveBomb')); }
+
+        function startLoveBomb() {
+            playSound('alarm'); document.getElementById('stepLoveBomb').classList.add('hidden');
+            let msgs = ["You're my Aaloo! 🥔", "I love you! ❤️", "So cute! 🥺", "My Gulab Jamun! 🍮", "Smile for me! ✨", "Nautanki! 🎭", "Mine forever! 🔒", "Princess! 👑", "Cutiepie! 🥰", "Hugs! 🤗", "Kisses! 😘", "You are my world! 🌍", "My everything! 💖", "Beautiful! 😍", "Don't stop smiling! ✨"];
+            tracker.bombsCleared = 0;
+            for(let i=0; i<15; i++) {
+                setTimeout(() => {
+                    let b = document.createElement('div'); b.className = 'love-bomb';
+                    b.innerHTML = msgs[i] + "<br><br><span style='font-size:10px; color:#888;'>Tap to dismiss</span>";
+                    b.style.left = (5 + Math.random()*70) + 'vw'; b.style.top = (5 + Math.random()*80) + 'vh';
+                    b.ontouchstart = (e) => clearBomb(e, b); b.onmousedown = (e) => clearBomb(e, b);
+                    document.body.appendChild(b); playSound('click');
+                }, i * 350);
+            }
+        }
+        function clearBomb(e, b) {
+            if(e) e.preventDefault(); b.remove(); playSound('right'); tracker.bombsCleared++;
+            if(tracker.bombsCleared >= 15) { 
+                setTimeout(() => { 
+                    showModal("HAYA: Wow! 15 Love Bombs neutralized! You survived! 🥵", () => { 
+                        document.getElementById('step5').classList.remove('hidden');
+                        document.getElementById('step5').classList.add('fade-in');
+                    }); 
+                }, 500); 
+            }
+        }
+
+        function actionNautanki() { tAdd('nautanki', 'Herself'); playSound('right'); showModal('Bingo! The biggest, cutest Nautanki I know! 🎭💖', () => { nextStep(5, 'Tap'); }); }
+
+        let tapScore = 0; let tapTimer; let tapDone = false;
+        function tapHeart(e) {
+            if(e) e.preventDefault(); 
+            if(tapDone) return; 
+            playSound('click'); 
+            tapScore += 15;
+            
+            if(!tapTimer) { 
+                tapTimer = setInterval(() => { 
+                    tapScore -= 6; 
+                    if(tapScore < 0) tapScore = 0; 
+                    document.getElementById('tapFill').style.width = tapScore + '%'; 
+                    if(!tapDone) document.getElementById('tapMsg').innerText = "Meter: " + tapScore + "% - Keep Tapping!!";
+                }, 200); 
+            }
+            
+            if(tapScore >= 100) { 
+                tapScore = 100; tapDone = true; clearInterval(tapTimer); playSound('right'); 
+                document.getElementById('tapMsg').innerText = "HAYA: METER FULL! 100%! Okay, you really love him! 💖"; 
+                document.getElementById('proceedTap').classList.remove('hidden'); 
+            } else {
+                document.getElementById('tapMsg').innerText = "Meter: " + tapScore + "% - Keep Tapping!!";
+            }
+            document.getElementById('tapFill').style.width = tapScore + '%';
+        }
+
+        function actionCamera() { playSound('wrong'); showModal("HAYA: Just kidding, I can't access your camera! But I bet you're blushing right now anyway. 🥰", () => nextStep('Camera', 'Charm')); }
+
+        function actionCharm(ans) {
+            tAdd('charm', ans);
+            if(ans === 'Smile') { mainBody.classList.remove('grayscale-locked'); playSound('right'); showModal("HAYA: Ah! There's the smile! Color restored! My circuits are melting. ✨❤️", () => document.getElementById('proceedCharm').classList.remove('hidden')); } 
+            else { mainBody.classList.add('grayscale-locked'); playSound('wrong'); showModal("HAYA: Nope! The world has lost its color! It stays gray until you use your magic! 🥺"); }
+        }
+
+        let micCount = 0;
+        function micStart(e) { if(e) e.preventDefault(); document.getElementById('micText').innerText = "Listening... 🟢"; }
+        function micEnd(e) {
+            if(e) e.preventDefault(); micCount++;
+            if(micCount === 1) { playSound('wrong'); document.getElementById('micText').innerText = "Didn't hear you! Say it louder! 😠"; }
+            else { playSound('right'); document.getElementById('micText').innerText = "Just kidding! I'm Haya, I don't have ears! 😂 But I bet you sounded cute."; setTimeout(() => nextStep('Mic', 7), 2500); }
+        }
+
+        function actionDream() {
+            tAdd('dream', 'Loving her more'); playSound('wrong'); showModal("Of course money! I want to be a billionaire! 😂💰", null, true);
+            setTimeout(() => {
+                playSound('right'); document.getElementById('modalText').innerText = "Kidding cutie... nothing is more precious than you. ❤️"; document.getElementById('modalBtn').style.display = 'inline-block';
+                document.getElementById('customModal').callback = () => { document.getElementById('step7').classList.add('hidden'); document.getElementById('bsodScreen').classList.remove('hidden'); playSound('wrong'); setTimeout(() => { document.getElementById('bsodScreen').classList.add('hidden'); nextStep(7, 8); }, 4000); };
+            }, 3000);
+        }
+
+        function actionStareFakeOut() { tAdd('stare', 'Zone out'); playSound('wrong'); showModal("Yeah, definitely. I'm usually thinking about what to eat for dinner. 🙄🍕", null, true); setTimeout(() => { playSound('right'); document.getElementById('modalText').innerText = "Pagal ladki! I am busy staring at my entire universe! 🌌❤️"; document.getElementById('modalBtn').style.display = 'inline-block'; }, 4000); }
+        function actionStareCorrect() { tAdd('stare', 'Lost in eyes'); playSound('right'); showModal("I just look at you and wonder what good deeds I did to get you. 😍", () => nextStep(8, 'Game2')); }
+
+        let board = ["", "", "", "", "", "", "", "", ""];
+        function playTTT(index, cell) {
+            if(board[index] !== "" || !document.getElementById('bribeZone').classList.contains('hidden')) return;
+            board[index] = "O"; cell.innerText = "O"; playSound('click');
+            let empty = board.map((v, i) => v === "" ? i : null).filter(v => v !== null);
+            if(empty.length === 0 || checkTTTWin("O")) { playSound('wrong'); document.getElementById('tttMsg').innerText = "HAYA HAS HALTED THE GAME!"; document.getElementById('bribeZone').classList.remove('hidden'); return; }
+            let aiMove = empty[Math.floor(Math.random() * empty.length)]; board[aiMove] = "X"; setTimeout(() => { document.querySelectorAll('.cell')[aiMove].innerText = "X"; playSound('click'); }, 300);
+            if(checkTTTWin("X")) { playSound('wrong'); document.getElementById('tttMsg').innerText = "HAYA WINS! Now pay up!"; document.getElementById('bribeZone').classList.remove('hidden'); }
+        }
+        function checkTTTWin(player) { const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; return wins.some(comb => comb.every(i => board[i] === player)); }
+        function acceptBribe() { playSound('right'); showModal("Haya accepts this bribe. Debt will be collected by Harsh in person. 😘", () => nextStep('Game2', 'PushSlider')); }
+
+        let fightTimer;
+        function startFight() {
+            if(!fightTimer) {
+                fightTimer = setInterval(() => {
+                    let sl = document.getElementById('fightSlider'); let val = parseInt(sl.value);
+                    if(val > 10 && val < 100) { sl.value = val - 5; }
+                    if(val >= 100) { clearInterval(fightTimer); playSound('right'); showModal("HAYA: Whoa! You overpowered me with your love! 💪❤️", () => nextStep('PushSlider', 'Speed')); }
+                }, 150);
+            }
+        }
+
+        let speedTime = 10.0; let speedTimer;
+        function checkSpeed() {
+            if(!speedTimer) { 
+                speedTimer = setInterval(() => { 
+                    speedTime -= 0.1; 
+                    document.getElementById('speedTimer').innerText = speedTime.toFixed(1); 
+                    if(speedTime <= 0) { 
+                        clearInterval(speedTimer); 
+                        document.getElementById('speedTimer').innerText = "0.0"; 
+                        playSound('wrong'); 
+                        document.getElementById('speedMsg').innerText = "HAYA: Too slow! Just kidding, I read it. You pass! 😂"; 
+                        document.getElementById('proceedSpeed').classList.remove('hidden'); 
+                    } 
+                }, 100); 
+            }
+            
+            let val = document.getElementById('speedInput').value.toLowerCase().replace(/[^a-z]/g, '');
+            if(val.includes('ilovemygulabjamun')) { 
+                clearInterval(speedTimer); 
+                playSound('right'); 
+                document.getElementById('speedMsg').innerText = "HAYA: Wow, fast fingers! Impressive. ❤️"; 
+                document.getElementById('proceedSpeed').classList.remove('hidden'); 
+            }
+        }
+
+        function actionHandsomeYes() { playSound('right'); showModal("HAYA: Correct answer. Proceed! 😎", () => nextStep('Handsome', 9)); }
+        function actionHandsomeNo() {
+            playSound('wrong'); tracker.pranksFallenFor++;
+            for(let i=0; i<30; i++) {
+                let y = document.createElement('button'); y.className = 'exploding-yes'; y.innerText = "YES HE IS!";
+                y.style.left = Math.random() * 80 + 'vw'; y.style.top = Math.random() * 80 + 'vh'; document.body.appendChild(y);
+            }
+            showModal("HAYA ERROR: INCORRECT OPINION DETECTED. OVERRIDING SYSTEM.", () => { document.querySelectorAll('.exploding-yes').forEach(el => el.remove()); });
+        }
+
+        function saveMoment() {
+            if(document.getElementById('specialMomentText').value.trim() === '') { playSound('wrong'); showModal("HAYA: Please write something sweet! 🥺"); return; }
+            tracker.memory = document.getElementById('specialMomentText').value; nextStep(9, 10);
+        }
+
+        function handlePhoto1() { document.getElementById('uploadText1').innerText = "Photo Selected! 💖"; document.getElementById('uploadText1').style.background = "#ffb3c6"; document.getElementById('uploadText1').style.color = "white"; playSound('right'); setTimeout(() => nextStep(10, 11), 1000); }
+        function handlePhoto2() { document.getElementById('uploadText2').innerText = "UPLOADING TO DELETE... 🗑️"; mainBody.classList.add('alarm-bg'); playSound('alarm'); setTimeout(() => { mainBody.classList.remove('alarm-bg'); showModal("🚨 HAYA SECURITY OVERRIDE 🚨\n\nDeletion Denied! No photo of Harsh and you can be deleted. This embarrassing photo has now been permanently saved to his 'Cute Aaloo' folder! 😎", () => { nextStep(11, 12); }); }, 2000); }
+
+        let scanTimer; let scanSuccess = false;
+        function startScan(e) { if(e) e.preventDefault(); document.getElementById('scanText').innerText = "Scanning biometrics... 🟢"; playSound('click'); scanTimer = setTimeout(() => { scanSuccess = true; playSound('alarm'); showModal("🚨 HAYA LIE DETECTOR 🚨\n\nSensors indicate you are 100% blushing and smiling right now. You may proceed.", () => nextStep(12, 13)); }, 3000); }
+        function stopScan(e) { if(e) e.preventDefault(); if(!scanSuccess) { clearTimeout(scanTimer); document.getElementById('scanText').innerText = "Scan failed. Keep your thumb on the screen longer! 😠"; playSound('wrong'); } }
+
+        function actionHesitate(btn) {
+            tracker.hesitateClicks++; playSound('wrong');
+            showModal("HAYA INTERVENTION 🚨\n\nLie detected! You don't hesitate. You love Harsh way too much for that. Let me fix this button for you! 😤", () => {
+                btn.innerText = "Yes forever ❤️"; btn.style.background = "linear-gradient(45deg, #d6336c, #ff6b81)"; btn.style.color = "white"; btn.style.boxShadow = "0 4px 15px rgba(214, 51, 108, 0.4)";
+                btn.onclick = () => triggerFinale('Yes forever (Forced by Haya!)'); playSound('right');
+            });
+        }
+
+        function triggerFinale(choice) {
+            playSound('right'); tracker.finalChoice = choice;
+            for(let i=0; i<45; i++) { let sf = document.createElement('div'); sf.innerHTML = '🌻'; sf.className = 'sunflower'; sf.style.left = Math.random() * 100 + 'vw'; sf.style.animationDuration = (Math.random() * 3 + 2) + 's'; document.body.appendChild(sf); }
+            showModal("A virtual sunflower for my sunshine. 🌻 (Haya is signing off...)", () => { document.getElementById('finalQuote').innerText = "Let's love to the maximum. Life goes on, love remains forever... 💞"; nextStep(13, 'Hand'); });
+        }
+
+        // --- NEW ROMANTIC HAND HOLDING ACTION ---
+        function actionHand(choice) {
+            if(choice === 'Hate') {
+                playSound('wrong'); tracker.pranksFallenFor++;
+                showModal("🚨 ERROR: Impossible action detected! Aaloo's heart is overriding the system... Switching to HOLD! 🥰", () => {
+                    tracker.finalHandChoice = "Tried to push it away (but Haya forced her to Hold it! 😂)";
+                    nextStep('Hand', 14);
+                });
+            } else {
+                playSound('right');
+                tracker.finalHandChoice = "Held his hand forever 🤝❤️";
+                nextStep('Hand', 14);
+            }
+        }
+
+        function sendToEmail() {
+            // 1. Gather all the tracking data
+            let msg = `H.A.Y.A. TOP SECRET REPORT 🤖💖\n\n`;
+            msg += `Harsh, I survived Haya's endless torture! Here is my full Aaloo Report:\n\n`;
+            msg += `--- 📊 MY EXACT CLICK HISTORY ---\n`;
+            msg += `- Prettiest Girl: ${formatHistory('pretty')}\n`;
+            msg += `- Private Time: ${formatHistory('private')}\n`;
+            msg += `- Safe Place: ${formatHistory('safe')}\n`;
+            msg += `- Nautanki: ${formatHistory('nautanki')}\n`;
+            msg += `- The Charm: ${formatHistory('charm')}\n`;
+            msg += `- The Dream: ${formatHistory('dream')}\n`;
+            msg += `- Staring: ${formatHistory('stare')}\n\n`;
+            msg += `--- 🕵️‍♀️ HAYA'S SURVEILLANCE ---\n`;
+            msg += `- His Sweet Name: ${tracker.nickname}\n`;
+            msg += `- Times she desperately chased the Checkbox: ${tracker.termsDodges}\n`;
+            msg += `- I tried to misspell cute ${tracker.autoFails} times.\n`;
+            msg += `- I fell for Haya's fake pranks ${tracker.pranksFallenFor} times!\n`;
+            msg += `- I cleared ${tracker.bombsCleared} Love Bombs!\n`;
+            msg += `- I chased dodging buttons ${tracker.dodgesCaught} times.\n`;
+            msg += `- I clicked 'I hesitate' ${tracker.hesitateClicks} times (and Haya yelled at me)!\n`;
+            msg += `- Bribe Accepted: ${tracker.bribe}\n`;
+            msg += `- Lie Detector: ${tracker.lieDetector}\n\n`;
+            msg += `--- 💭 OUR MEMORY ---\n`;
+            msg += `${tracker.memory}\n\n`;
+            msg += `--- 💌 FINAL DECISIONS ---\n`;
+            msg += `- Letter Response: ${tracker.finalChoice}\n`;
+            msg += `- Hand Response: ${tracker.finalHandChoice} ❤️`;
+
+            // Change button text so she knows it's uploading large photo files
+            let btn = document.querySelector('#step14 .btn-primary');
+            btn.innerText = "Uploading Photos & Report... ⏳";
+            btn.style.pointerEvents = "none"; // Stop double clicks
+            playSound('click');
+
+            // Grab the actual image files she selected!
+            let photo1 = document.querySelector('#step10 input[type="file"]').files[0];
+            let photo2 = document.querySelector('#step11 input[type="file"]').files[0];
+
+            // 2. Create FormData (This allows sending text + heavy files together)
+            let formData = new FormData();
+            formData.append('access_key', '65beaec3-7e92-41f1-a4a5-356e6a6b70d6'); // Your actual key!
+            formData.append('subject', '🚨 New Haya Report with PHOTOS! 🥔❤️');
+            formData.append('message', msg);
+            
+            // Attach the photos if she uploaded them
+            if(photo1) { formData.append('Proof_Photo', photo1); }
+            if(photo2) { formData.append('Embarrassing_Photo', photo2); }
+
+            // 3. Silently email everything in the background
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                playSound('right');
+                btn.innerText = "Sent Successfully! ✅";
+                showModal("HAYA: Report and PHOTOS uploaded successfully to Harsh's secure server! 🤖📸\n\nYou are all done! You can close this page now. ❤️");
+            })
+            .catch(error => {
+                playSound('wrong');
+                showModal("HAYA: Server error. Tell Harsh to fix my circuits! 🤖");
+                btn.innerText = "Try Again 🔄";
+                btn.style.pointerEvents = "auto";
+                console.log(error);
+            });
+        }
+    </script>
+</body>
+</html>
