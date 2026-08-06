@@ -306,7 +306,7 @@
     <div id="stepNickname" class="glass-panel hidden">
         <p class="haya-text">Sweetness Check</p>
         <h2>Identity Protocol 🍮</h2>
-        <p>Aaloo is his cute name for you. But what do you call HIM when he's looking extra sweet?</p>
+        <p>Aaloo is your name for him. But what do you call HIM when he's looking extra sweet?</p>
         <p style="font-size: 12px; color: #888;">(Hint: A very sweet, Matches his colour tone)</p>
         <input type="text" id="nicknameInput" placeholder="Enter nickname...">
         <button class="btn-primary" onclick="checkNickname()">Verify Sweetness</button>
@@ -355,7 +355,7 @@
         <p class="haya-text">Haya's Warning !</p>
         <h2>Forbidden Action 🛑</h2>
         <p>Whatever you do, absolutely DO NOT press this red button.</p>
-        <div class="red-btn" ontouchstart="actionRedBtn(event)" onmousedown="actionRedBtn(event)">PRESS</div>
+        <div class="red-btn" ontouchstart="actionRedBtn(event)" onmousedown="actionRedBtn(event)"> DO NOT PRESS</div>
     </div>
 
     <div id="stepColor" class="glass-panel hidden">
@@ -412,7 +412,7 @@
     <div id="stepMic" class="glass-panel hidden">
         <p class="haya-text">Haya Voice Protocol</p>
         <h2>Voice Verification 🎙️</h2>
-        <p>Tap and hold the mic, and say <b>"I love you my harshuu"</b> out loud to prove you aren't a robot.</p>
+        <p>Tap and hold the mic, and say <b>"I love you my harshuu"</b> out loud to prove you arent a robot.</p>
         <button class="mic-btn" id="micBtn" style="width: 80px; height: 80px; border-radius: 50%; background: #ff4757; color: white; font-size: 30px; border: none; box-shadow: 0 0 15px rgba(255, 71, 87, 0.6); margin-top: 20px;" ontouchstart="micStart(event)" ontouchend="micEnd(event)" onmousedown="micStart(event)" onmouseup="micEnd(event)">🎤</button>
         <p id="micText" style="margin-top: 15px; color: #888;">Waiting for voice...</p>
     </div>
@@ -433,7 +433,7 @@
         <p>Why does he stare at you so much when you are talking?</p>
         <button class="btn-option" onclick="actionStareFakeOut()">A. Because he zones out</button>
         <button class="btn-option" onclick="tAdd('stare', 'Sleepy'); showModal('Never! Your voice is his favorite melody! 🎶')">B. Because he is sleepy</button>
-        <button class="btn-option" onclick="tAdd('stare', 'Read Mind'); showModal('He wishes he could, but his brain isn\'t that smart! 🧠✨')">C. Trying to read your mind</button>
+        <button class="btn-option" onclick="tAdd('stare', 'Read Mind'); showModal('He wishes he could, but his brain isnt that smart! 🧠✨')">C. Trying to read your mind</button>
         <button class="btn-option" onclick="actionStareCorrect()">D. Because he gets completely lost in your eyes</button>
     </div>
 
@@ -952,7 +952,13 @@
             if(tapScore >= 100) { 
                 tapScore = 100; tapDone = true; clearInterval(tapTimer); playSound('right'); 
                 document.getElementById('tapMsg').innerText = "HAYA: METER FULL! 100%! Okay, you really love him! 💖"; 
-                document.getElementById('proceedTap').classList.remove('hidden'); 
+                
+                // ADDED DELAY: Prevents accidental skip while rapid tapping
+                setTimeout(() => {
+                    let pTap = document.getElementById('proceedTap');
+                    pTap.classList.remove('hidden');
+                    pTap.classList.add('fade-in');
+                }, 2000); 
             } else {
                 document.getElementById('tapMsg').innerText = "Meter: " + tapScore + "% - Keep Tapping!!";
             }
@@ -1097,7 +1103,13 @@
                 document.getElementById('hugAvatar').style.display = 'block';
                 
                 document.getElementById('ropeMsg').innerHTML = "<em>Let's forget the distance and misunderstandings... Let's be each other's just like before, connected by heart. Then everything will be beautiful again, not a routine.</em> 🥺❤️"; 
-                document.getElementById('ropeProceed').classList.remove('hidden'); 
+                
+                // ADDED DELAY: Prevents accidental skip while rapid tapping
+                setTimeout(() => {
+                    let rProceed = document.getElementById('ropeProceed');
+                    rProceed.classList.remove('hidden');
+                    rProceed.classList.add('fade-in');
+                }, 2500); 
             } else {
                 let move = (ropeScore / 100) * 35; 
                 document.getElementById('boyAvatar').style.left = move + '%';
