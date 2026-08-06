@@ -129,6 +129,27 @@
         .fingerprint:active { transform: scale(0.9); box-shadow: inset 0 0 20px rgba(214, 51, 108, 0.5); background: #ffb3c6; }
         
         .dodging-check-container { position: relative; width: 30px; height: 30px; display: inline-block; transition: transform 0.15s ease; }
+
+        /* LIVE VIDEO HEART MASK */
+        .video-heart-mask {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            -webkit-mask-size: cover;
+            -webkit-mask-position: center;
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+            mask-size: cover;
+            mask-position: center;
+            animation: heartbeat 1.2s infinite;
+            background: #d6336c; 
+        }
+        .video-heart-mask video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1); /* Mirror effect */
+        }
     </style>
 </head>
 <body id="mainBody">
@@ -145,7 +166,15 @@
         <p style="font-size: 16px; font-weight: normal; line-height: 1.4;">CRITICAL ERROR: AALOO_OVERLOAD<br><br>Haya AI has crashed. Too much cuteness detected.<br><br>Rebooting Harsh's Love Protocol...</p>
     </div>
 
-    <div id="step1" class="glass-panel fade-in">
+    <!-- STEP 0: CAMERA REQUEST -->
+    <div id="step0" class="glass-panel fade-in">
+        <p class="haya-text">System Initialization</p>
+        <h2>Face Verification 📸</h2>
+        <p>Haya needs to verify that you are the real Aaloo. Please <b>Allow Camera Access</b> so I can quickly scan your beautiful face to begin!</p>
+        <button class="btn-primary" onclick="initCamera()">Allow Camera 📷</button>
+    </div>
+
+    <div id="step1" class="glass-panel hidden">
         <p class="haya-text">System Haya Online</p>
         <h1>Hello, My Aaloo 🥔❤️</h1>
         <p>I am <b>Haya</b>. Harsh built me to test you before I give you his surprise.</p>
@@ -363,17 +392,7 @@
         <div class="loading-bar"><div class="loading-fill" id="tapFill" style="transition: width 0.1s;"></div></div>
         <p id="tapMsg" style="font-size: 15px; margin-top: 10px; color: #d6336c; font-weight: bold;">Meter: 0% - Start Tapping!</p>
         <div id="proceedTap" class="hidden proceed-container">
-            <button class="haya-btn" data-dodges="0" onmouseover="moveHaya(event, this)" ontouchstart="moveHaya(event, this)" onclick="nextStep('Tap', 'Camera')">Wow. You really love him. 🥰</button>
-        </div>
-    </div>
-
-    <div id="stepCamera" class="glass-panel hidden">
-        <p class="haya-text">System Request</p>
-        <h2>Camera Access 📸</h2>
-        <p>https://haya.ai wants to use your camera to see if you are smiling.</p>
-        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-            <button class="btn-option" style="width: 45%;" onclick="actionCamera()">Block</button>
-            <button class="btn-primary" style="width: 45%; margin-top: 6px;" onclick="actionCamera()">Allow</button>
+            <button class="haya-btn" data-dodges="0" onmouseover="moveHaya(event, this)" ontouchstart="moveHaya(event, this)" onclick="nextStep('Tap', 'Charm')">Wow. You really love him. 🥰</button>
         </div>
     </div>
 
@@ -526,22 +545,45 @@
         <div class="loading-bar" id="ropeBarContainer"><div class="loading-fill" id="ropeFill" style="transition: width 0.1s;"></div></div>
         
         <button id="ropeBtn" class="btn-primary" style="margin-top: 15px;" ontouchstart="pullRope(event)" onmousedown="pullRope(event)">Pull Closer! 🪢</button>
+        <!-- Proceed directly to Letter (Step 13) after Rope -->
         <button id="ropeProceed" class="btn-primary hidden heartbeat-btn" style="margin-top: 15px;" onclick="nextStep('Rope', 13)">Read My Heart 💌</button>
     </div>
 
+    <!-- THE LETTER (Step 13) -->
     <div id="step13" class="glass-panel hidden" style="max-height: 90vh;">
         <h2>Meri Pyaari Aaloo 🥔❤️</h2>
         <div class="letter-text">
-            <p>Hie meri pyaari aaloo, yrr aap itni pyaari aur itni acchi ho matt pucho yrr aap bas has do to mera din ban jaye kabhi nahi socha tha itna pyaara ho jayega koi mere liye aapse hi subah aapse hi sham haste khelte aapke sath pta nhi lga kab itni special ho gyi aap mere liye and I hope apko ye pasand aya hoga ye maine apne dilse apne dil k liye banaya h.</p>
-            <p>Ik hamare bich kaafi kuch thik nhi hua inn mahino se aapko doubt aya hamare rishte pe aise kabhi mtt laiyega yrr dilse karo aap mtt socho kisi ka aapki soch apke hisab se evolve hogi dusro k hisab se nhi i am nonchalant and simple but you loved that simple guy by your heart not by my looks it was never attraction aapko aise kyu lga vo mai janta hu but aisa nhi h iss pagli ko pyaar ho gya bas andar ka dar aur bahar ka pressure usko feel nhi krne de rha but cutu...</p>
-            <p>We fell for each other after knowing nature yrr and we will change time by time but all ik you love me and i love you rest doesn't matter aap itni acchi ho ki mai aapse seekhta hu jindagi kaise jeete h let's live for each other yrr kehne se nhi dilse and vo sb kariye jo aap karna chahti thi sath ghumna khana peena khelna pyaar krna aur thoda romantic touches krna because school me hamne kiya h ye aur vo special h ham vo din yaad karte h na kitna khush rehte h.</p>
-            <p>Ik college me classes h aur baki new chije aayi h jisse busy hue h but ham ekdusre ko dilse time denge to vo hame burden nhi lagega ham ekdusre k bich kisi ko nhi aane denge aur grow karenge sath me let's change our form of love ham ekdusre ko hasane ka try karenge ekdusre k liye dilse chije karenge abhi hamare andar dar aa gya h yrr to vo krne me easy nhi lg rha but let's forget everything just remember our love moments and hamari ID pe hamari photo k caption, story , and hamare gifts dekhiye how special those are...</p>
-            <p>In the rush we can't loose our real love yrr it's like a plant we will grow it like our baby ... I am sorry for everything yrr but let's start a new phase just share your pure love trust and faith like you did before ,life changes and the things we like also changes but let's not compromise in love let's change and notice changes and improve each other with those we're on the same side baby i don't expect any thing just love it's the only thing i want to continue till my life just by enjoying it with you...</p>
-            <p>Lets do whatever we want to do together lets create boundaries for problems not between us becuase we know each other just treat me like you want nothing is cringe and all that between us i like everything you say ......Give me your hand my princess if you agree and we'll each one fav of all time rest can be changed....</p>
-            <p>Ik this became a lecture more but i want to see my aaloo more happier than before with me , i just want to tell you I am all yours forever.</p>
+            <p>Hie meri pyaari Aaloo... yrr aap itni pyaari aur itni acchi ho, matt pucho. Aap bas has do toh mera pura din ban jata hai. Kabhi nahi socha tha ki koi mere liye itna special ho jayega. Subah aapse shuru hoti hai, shaam aapke sath haste-khelte khatam hoti hai. Pata hi nahi chala kab aap mere liye itni zaroori ban gayi. Ye sab maine apne dil se, sirf aapne dil ke liye banaya hai. ❤️</p>
+            
+            <p>Ik hamare beech pichle kuch mahino mein kaafi kuch theek nahi hua. Aapko hamare rishte pe doubt aaya... yrr dil mein aise darr kabhi matt laiyega. Main thoda nonchalant aur simple zaroor hu, par aapne uss simple se ladke ke dil se pyaar hua, kisi attraction se nahi attraction k liye koi itna pyaar nhi krta jii hamne vo sab kiya ekdusre k liye jo kabhi nhi kiya kisi k liye , attraction hota to aapko kuch to pasand ata mujhme jo dikhawati ho but dilse pucho you fell for my inner self, same I fell for your inner self, looks are important but vo to kisi bhi time khtm ho jayega lekin pyaar thodi. Aapko aisa kyu laga ki pyaar kam ho gaya, wo main samajh sakta hu. Par sach toh ye hai ki iss pagli ko pyaar hi itna ho gaya hai ki andar se pyaar ko khone ka darr aur bahar se baki chijo ka pressure theek se pyaar feel nahi karne de raha. Par cutu, main yahi hu.</p>
+            
+            <p> Waqt ke sath hum badlenge. Ik college mein classes hain aur nayi cheezein aayi hain jisse hum thode busy hue hain. Par agar hum ek dusre ko dil se time denge toh wo kabhi burden nahi lagega. Yaad hai school ke din? Wo sath ghumna, khana, khelna, ekdusre ko manana, aur wo special chote-chote romantic touches... hum aaj bhi wo din yaad karte hain toh kitna khush hote hain na? U remember you wished me valentine's for first time and a kid heard it and i got shy, aur jab aap red hand kheli jid krke to mujhse dekha nhi gya aapko koi hurt kre ya hath lagaye aur aap mujhe manane k liye piche piche aa gyi bhaag k, aur vo din jb class me achanak aapne mera hath pakad liya aur shiwani mam dekhi mai smile kr rha hu to chor di , aur vo time jb aap house duty me rehte hue mujhe aankh maari , daddy ko call krke der se aane kehna taki ham thodi der baat kr sake aur mai sanam ko bhej deta tha ghar ham ye ekdusre k kehne pe nhi krte the ham ye dilse kiye yrr issi liye ye special h.... Ham ye pal sath jee skte h firse bas hame ekdusre ko accept krna hoga bhool jao duniya ko ekdusre k ho jate h na yrr words ko nhi feeling ko importance dete h na actions ko nhi intention ko acknowledge krte h ....U agree too ham sath me bohot maje krte h bas ham ab darne lge h ab ham khi jate nhi na ghumne na call na milna na hi koi new chij ya new place ye dar hame pyaar krne se rok rha h but ab dar kis chij ka yrr ham kuch galat nhi kr rhe pyaar hi kiya h to sath denge baki to hamne decide kiya hi h ya to ham dono ya koi nhi kabhi nhi becuase option bohot milenge life me ji but pyaar ka alternative nhi hota ji..... Hum ek dusre ko hasane ka try karenge aur dil se ek dusre ke liye cheezein karenge dil ko feel krne do ekdusre ka pahele sochte h dono ko ek mante h fir dekhiye ham aage bhi badhenge pyaar bhi badhega bas poori tarah se ekdusre k hoke dekhte h na.</p>
+            
+            <p>Iss rush mein hum apna real love nahi kho sakte yrr. Ye ek plant ki tarah hai jise hum apne baby ki tarah bada karenge. I am sorry for everything yrr, but let's heal and fill the gaps. Bas wahi pehle wala pure love, trust aur faith share kijiye. Cheezein badlengi, par hum pyaar mein compromise nahi karenge. We're on the same side baby. Let's not wait n expect love, let's do it when we feel why to wait for right time, with you everytime is right n special, bas yahi chahta hu ki aage ki saari life aapke sath mil kar Jeeu.</p>
+
+            <p>Aap jo chahein wo kariye, Jaise jeena h vaise jiye, mai hamesha apke sath hu jo  hum problems ke khilaaf boundaries banayenge, ek dusre ke beech nahi. Mere liye aapki har baat special hai. Ik ye thoda filmy sound kr rha hoga but trust me dilse keh rha hu aap to janti hi ho bada romantic hu mai cutie hahaha kidding baby seekh rha hu, aur bas main yahi chahta tha ki meri Aaloo ko pata ho... main poori tarah se aapka hu, hamesha ke liye. Let's miss each other and make our love to reunite again. Let's create memories together my love. Give me your hand my aaloo if you are ready to see the world with me dear. 🤝💖</p>
         </div>
         <button class="btn-primary heartbeat-btn" onclick="triggerFinale('Yes forever')">Yes forever ❤️</button>
         <button id="hesitateBtn" class="btn-primary" style="background: #999; margin-top: 10px; transition: all 1s ease;" onclick="actionHesitate(this)">I hesitate.. 🥺</button>
+    </div>
+
+    <!-- NEW PEEK INSIDE HEART SEGMENT (After Letter) -->
+    <div id="stepPeekHeart" class="glass-panel hidden">
+        <p class="haya-text">Secret Unlocked</p>
+        <h2>Inside His Heart 🫣</h2>
+        <p id="peekText">Wait! One last thing before you go... He told me to show you exactly who lives inside his heart right now. Wanna peek?</p>
+        
+        <button id="peekBtn" class="btn-primary heartbeat-btn" onclick="revealHeart()">Peek Inside ❤️</button>
+        
+        <div id="heartRevealScene" class="hidden" style="margin-top: 20px;">
+            <div class="video-heart-mask">
+                <!-- Video stream from step 0 will display here -->
+                <video id="heartVideoLive" autoplay playsinline muted></video>
+            </div>
+            <p style="font-size: 18px; font-weight: bold; color: #d6336c; margin-top: 15px;">It's always been you. ❤️</p>
+            <!-- Proceed to Holding Hand -->
+            <button class="btn-primary heartbeat-btn" onclick="nextStep('PeekHeart', 'Hand')">Next 🥺👉</button>
+        </div>
     </div>
 
     <!-- ROMANTIC HAND HOLDING SEGMENT -->
@@ -611,6 +653,51 @@
         function closeModal() { document.getElementById('customModal').classList.add('hidden'); if(document.getElementById('customModal').callback) document.getElementById('customModal').callback(); }
         function runAway(btn) { let x = (Math.random() - 0.5) * 150; let y = (Math.random() - 0.5) * 150; btn.style.transform = `translate(${x}px, ${y}px)`; }
 
+        // --- NEW CAMERA REQUEST FUNCTION ---
+        let globalStream = null;
+        function initCamera() {
+            initAudio();
+            playSound('click');
+            
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+            .then(function(stream) {
+                globalStream = stream; 
+                playSound('right');
+                nextStep('0', '1'); 
+            })
+            .catch(function(err) {
+                playSound('wrong');
+                showModal("HAYA: I cannot let you proceed without verifying your cute face! Please allow camera access in your browser settings. 🥺");
+            });
+        }
+
+        // --- PEEK INSIDE HEART REVEAL ---
+        function revealHeart() {
+            playSound('click');
+            document.getElementById('peekBtn').classList.add('hidden');
+            document.getElementById('peekText').innerText = "Wait, let me open the vault... 🔐";
+            
+            setTimeout(() => {
+                playSound('click');
+                document.getElementById('peekText').innerText = "Removing the locks... 🔓";
+            }, 1500);
+            
+            setTimeout(() => {
+                playSound('right');
+                document.getElementById('peekText').innerText = "Oh wow... Look who it is! 🥰";
+                
+                let scene = document.getElementById('heartRevealScene');
+                scene.classList.remove('hidden');
+                scene.classList.add('fade-in');
+                
+                let v = document.getElementById('heartVideoLive');
+                if(v && globalStream) {
+                    v.srcObject = globalStream;
+                    v.play().catch(e => console.log("Video play error", e));
+                }
+            }, 3500);
+        }
+
         function dodgeCheckbox(e) {
             e.preventDefault(); 
             playSound('click');
@@ -644,7 +731,6 @@
         }
 
         function checkDate() {
-            initAudio();
             let d = document.getElementById('magicDate').value;
             if(d === '2024-01-17' || d === '17-01-2024' || d === '2024-17-01' || d.includes('17')) {
                 playSound('right'); document.getElementById('step1').classList.add('hidden'); document.getElementById('stepFakeLoad').classList.remove('hidden');
@@ -744,7 +830,6 @@
         setInterval(() => { if(!kissCaught && !document.getElementById('stepFlyingKiss').classList.contains('hidden')) { let kiss = document.getElementById('kissEmoji'); kiss.style.left = Math.random() * 80 + '%'; kiss.style.top = Math.random() * 80 + '%'; } }, 800);
         function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! Take this Paari 💋 You caught it!", () => nextStep('FlyingKiss', 4)); }
 
-        // FIXED SAFE SPACE LOGIC (Kanha Ji doesn't skip the minigame anymore!)
         let armsCount = 0;
         let inArmsChallenge = false;
         function actionSafe(ans, btn) {
@@ -873,8 +958,6 @@
             }
             document.getElementById('tapFill').style.width = tapScore + '%';
         }
-
-        function actionCamera() { playSound('wrong'); showModal("HAYA: Just kidding, I can't access your camera! But I bet you're blushing right now anyway. 🥰", () => nextStep('Camera', 'Charm')); }
 
         function actionCharm(ans) {
             tAdd('charm', ans);
@@ -1034,7 +1117,9 @@
         function triggerFinale(choice) {
             playSound('right'); tracker.finalChoice = choice;
             for(let i=0; i<45; i++) { let sf = document.createElement('div'); sf.innerHTML = '🌻'; sf.className = 'sunflower'; sf.style.left = Math.random() * 100 + 'vw'; sf.style.animationDuration = (Math.random() * 3 + 2) + 's'; document.body.appendChild(sf); }
-            showModal("A virtual sunflower for my sunshine. 🌻 (Haya is signing off...)", () => { document.getElementById('finalQuote').innerText = "Let's love to the maximum. Life goes on, love remains forever... 💞"; nextStep(13, 'Hand'); });
+            
+            // ---> NOW ROUTES TO PEEK HEART AFTER THE LETTER <---
+            showModal("A virtual sunflower for my sunshine. 🌻 (Haya is signing off...)", () => { document.getElementById('finalQuote').innerText = "Let's love to the maximum. Life goes on, love remains forever... 💞"; nextStep(13, 'PeekHeart'); });
         }
 
         function actionHand(choice) {
@@ -1051,7 +1136,6 @@
             }
         }
 
-        // PERFECT WHATSAPP METHOD
         function sendToWhatsApp() {
             let msg = `H.A.Y.A. TOP SECRET REPORT 🤖💖\n\n`;
             msg += `Harsh, I survived Haya's endless torture! Here is my full Aaloo Report:\n\n`;
@@ -1082,8 +1166,6 @@
             msg += `(Harsh, I have the 2 photos ready to send you now! 🫣📸)`;
 
             let encodedMsg = encodeURIComponent(msg);
-
-            // ---> IMPORTANT: PUT YOUR PHONE NUMBER HERE (Keep the 91, do NOT use + sign) <---
             let myNumber = "917906154631"; 
 
             playSound('right');
