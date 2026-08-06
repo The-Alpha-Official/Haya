@@ -175,7 +175,7 @@
     </div>
 
     <div id="step1" class="glass-panel hidden">
-        <p class="haya-text">System Haya Online</p>
+        <p class="haya-text">System : H.A.Y.A Online</p>
         <h1>Hello, My Aaloo 🥔❤️</h1>
         <p>I am <b>Haya</b>. Harsh built me to test you before I give you his surprise.</p>
         <p>What is the exact date you told him you loved him?</p>
@@ -206,7 +206,7 @@
         <p class="haya-text">Legal Binding</p>
         <h2>Terms & Conditions 📜</h2>
         <p style="font-size: 13px; text-align: left; background: #ffe6ea; padding: 10px; border-radius: 10px; height: 80px; overflow-y: auto;">
-            By checking the box below, you agree that Harsh is you forever partner, Harsh is the cutest, and you owe Harsh infinite hugs forever.
+            By checking the box below, you agree that Harsh is your forever partner, Harsh is the cutest, and you owe Harsh infinite hugs forever.
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; position: relative; height: 40px;">
@@ -306,7 +306,7 @@
     <div id="stepNickname" class="glass-panel hidden">
         <p class="haya-text">Sweetness Check</p>
         <h2>Identity Protocol 🍮</h2>
-        <p>Aaloo is your name for him. But what do you call HIM when he's looking extra sweet?</p>
+        <p>He call you Aaloo. But what do you call HIM when he's looking extra sweet?</p>
         <p style="font-size: 12px; color: #888;">(Hint: A very sweet, Matches his colour tone)</p>
         <input type="text" id="nicknameInput" placeholder="Enter nickname...">
         <button class="btn-primary" onclick="checkNickname()">Verify Sweetness</button>
@@ -561,7 +561,7 @@
             
             <p>Iss rush mein hum apna real love nahi kho sakte yrr. Ye ek plant ki tarah hai jise hum apne baby ki tarah bada karenge. I am sorry for everything yrr, but let's heal and fill the gaps. Bas wahi pehle wala pure love, trust aur faith share kijiye. Cheezein badlengi, par hum pyaar mein compromise nahi karenge. We're on the same side baby. Let's not wait n expect love, let's do it when we feel why to wait for right time, with you everytime is right n special, bas yahi chahta hu ki aage ki saari life aapke sath mil kar Jeeu.</p>
 
-            <p>Aap jo chahein wo kariye, Jaise jeena h vaise jiye, mai hamesha apke sath hu jo  hum problems ke khilaaf boundaries banayenge, ek dusre ke beech nahi. Mere liye aapki har baat special hai. Ik ye thoda filmy sound kr rha hoga but trust me dilse keh rha hu aap to janti hi ho bada romantic hu mai cutie hahaha kidding baby seekh rha hu, aur bas main yahi chahta tha ki meri Aaloo ko pata ho... main poori tarah se aapka hu, hamesha ke liye. Let's miss each other and make our love to reunite again. Let's create memories together my love. Give me your hand my aaloo if you are ready to see the world with me dear. 🤝💖</p>
+            <p>Aap jo chahein wo kariye, Jaise jeena h vaise jiye, mai hamesha apke sath hu jo  hum problems ke khilaaf boundaries banayenge, ek dusre ke beech nahi. Mere liye aapki har baat special hai. Ik ye thoda filmy sound kr rha hoga but trust me dilse keh rha hu aap to janti hi ho bada romantic hu mai cutie hahaha kidding baby seekh rha hu, aur bas main yahi chahta tha ki meri Aaloo ko pata ho... main poori tarah se aapka hu, hamesha ke liye. Let's miss each other and make our love to reunite again. Let's create memories together my love and be real with each other. Give me your hand my aaloo if you are ready to see the world with me dear. 🤝💖</p>
         </div>
         <button class="btn-primary heartbeat-btn" onclick="triggerFinale('Yes forever')">Yes forever ❤️</button>
         <button id="hesitateBtn" class="btn-primary" style="background: #999; margin-top: 10px; transition: all 1s ease;" onclick="actionHesitate(this)">I hesitate.. 🥺</button>
@@ -571,7 +571,7 @@
     <div id="stepPeekHeart" class="glass-panel hidden">
         <p class="haya-text">Secret Unlocked</p>
         <h2>Inside His Heart 🫣</h2>
-        <p id="peekText">Wait! One last thing before you go... He told me to show you exactly who lives inside his heart right now. Wanna peek?</p>
+        <p id="peekText">Wait! One last thing before you go... He told me to show you something right now what's inside him. Wanna peek?</p>
         
         <button id="peekBtn" class="btn-primary heartbeat-btn" onclick="revealHeart()">Peek Inside ❤️</button>
         
@@ -760,7 +760,7 @@
         function qPrettiest(ans) {
             tAdd('pretty', ans);
             let panel = document.getElementById('step2'); panel.classList.add('shatter'); playSound('wrong');
-            setTimeout(() => { showModal("Are you serious this will be answer?! 😱 Harsh's eyes only search for his Aaloo! I won't allow this! 😤", () => { panel.classList.remove('shatter'); document.getElementById('fogScreen').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden'); }); }, 600);
+            setTimeout(() => { showModal("Never! are you serious ?😱 Harsh's eyes only search for his aaloo 😤", () => { panel.classList.remove('shatter'); document.getElementById('fogScreen').classList.remove('hidden'); document.getElementById('step2').classList.add('hidden'); }); }, 600);
         }
 
         let fogSwipes = 0;
@@ -771,7 +771,7 @@
         }
 
         let autoCount = 0;
-        const slipWords = ["nautanki", "kaleshi kavya", "unromantic aaloo", "drama queen", "bhootni", "pagli"];
+        const slipWords = ["Nautanki", "kaleshi kavya", "unromantic aaloo", "drama queen", "Chotu baby", "pagli"];
         function checkAutocorrect() {
             let input = document.getElementById('autoInput');
             if(input.value.toLowerCase().endsWith("cute") && autoCount < slipWords.length) {
@@ -790,7 +790,7 @@
 
         function actionPrivate(type, btn) {
             tAdd('private', type);
-            if(type === 'nothing') { btn.classList.add('fade-out'); playSound('wrong'); setTimeout(() => showModal("HAYA: Excuse me?! So boring! I'm deleting this option for Harsh. 💨"), 500); } 
+            if(type === 'nothing') { btn.classList.add('fade-out'); playSound('wrong'); setTimeout(() => showModal("HAYA: Excuse me?! So Unromantic! I'm deleting this option for Harsh. 💨"), 500); } 
             else if (type === 'pitti') { btn.classList.add('shake-hard'); playSound('wrong'); setTimeout(() => { btn.classList.remove('shake-hard'); showModal('Ouchie! 🤕 I am a good boy, I only deserve love! Choose nicely!'); }, 800); } 
             else if (type === 'hug') { playSound('right'); showModal('Just come here... always waiting for you with open arms. 🤗', () => document.getElementById('proceed3').classList.remove('hidden')); } 
             else if (type === 'kissy') { playSound('right'); showModal('Bolne se nhi hota, karne se hota h... aao paas 😉😘', () => document.getElementById('proceed3').classList.remove('hidden')); }
@@ -828,7 +828,7 @@
 
         let kissCaught = false;
         setInterval(() => { if(!kissCaught && !document.getElementById('stepFlyingKiss').classList.contains('hidden')) { let kiss = document.getElementById('kissEmoji'); kiss.style.left = Math.random() * 80 + '%'; kiss.style.top = Math.random() * 80 + '%'; } }, 800);
-        function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! Take this Paari 💋 You caught it!", () => nextStep('FlyingKiss', 4)); }
+        function catchKiss(e) { if(e) e.preventDefault(); kissCaught = true; playSound('right'); showModal("Muah! Take this Paari 💋 Sweet right ;) ", () => nextStep('FlyingKiss', 4)); }
 
         let armsCount = 0;
         let inArmsChallenge = false;
@@ -895,7 +895,7 @@
             if(e) e.preventDefault(); 
             playSound('alarm'); 
             document.getElementById('stepRedBtn').classList.add('hidden');
-            showModal("Wow, so rebellious. I said DO NOT press it! ...But honestly, I loves that about you. 😏 Pass.", () => {
+            showModal("Wow, so rebellious. I said DO NOT press it! ...But honestly, I love that about you. 😏 Pass.", () => {
                 let nextEl = document.getElementById('stepColor');
                 nextEl.classList.remove('hidden');
                 nextEl.classList.add('fade-in');
@@ -907,7 +907,7 @@
 
         function startLoveBomb() {
             playSound('alarm'); document.getElementById('stepLoveBomb').classList.add('hidden');
-            let msgs = ["You're my Aaloo! 🥔", "I love you! ❤️", "So cute! 🥺", "Your Gulab Jamun! 🍮", "Smile for me! ✨", "Nautanki! 🎭", "Mine forever! 🔒", "Princess! 👑", "Cutiepie! 🥰", "Hugs! 🤗", "Kisses! 😘", "You are my world! 🌍", "My everything! 💖", "Beautiful! 😍", "Don't stop smiling! ✨"];
+            let msgs = ["You're my Aaloo! 🥔", "I love you! ❤️", "So cute! 🥺", "Your Gulab Jamun! 🍮", "Smile for me! ✨", "I nommm Youu", "Mine forever! 🔒", "Princess! 👑", "Cutiepie! 🥰", "Hugs! 🤗", "Paari! 😘", "You are my world! 🌍", "My everything! 💖", "Beautiful! 😍", "Don't stop smiling! ✨"];
             tracker.bombsCleared = 0;
             for(let i=0; i<15; i++) {
                 setTimeout(() => {
@@ -931,7 +931,7 @@
             }
         }
 
-        function actionNautanki() { tAdd('nautanki', 'Herself'); playSound('right'); showModal('Bingo! The biggest, cutest Nautanki I know! 🎭💖', () => { nextStep(5, 'Tap'); }); }
+        function actionNautanki() { tAdd('nautanki', 'Herself'); playSound('right'); showModal('Hehehe! The cutest Nautanki I know! 🎭💖', () => { nextStep(5, 'Tap'); }); }
 
         let tapScore = 0; let tapTimer; let tapDone = false;
         function tapHeart(e) {
@@ -951,7 +951,7 @@
             
             if(tapScore >= 100) { 
                 tapScore = 100; tapDone = true; clearInterval(tapTimer); playSound('right'); 
-                document.getElementById('tapMsg').innerText = "HAYA: METER FULL! 100%! Okay, you really love him! 💖"; 
+                document.getElementById('tapMsg').innerText = "HAYA: METER FULL! 100%! Okay, you really love your mataruu! 💖"; 
                 
                 // ADDED DELAY: Prevents accidental skip while rapid tapping
                 setTimeout(() => {
@@ -980,7 +980,7 @@
         }
 
         function actionDream() {
-            tAdd('dream', 'Loving her more'); playSound('wrong'); showModal("Of course money! I want to be a billionaire! 😂💰", null, true);
+            tAdd('dream', 'Loving her more'); playSound('wrong'); showModal("Of course money! I want to be a billionaire! Fortuner leni h uk na 😂💰", null, true);
             setTimeout(() => {
                 playSound('right'); document.getElementById('modalText').innerText = "Kidding cutie... nothing is more precious than you. ❤️"; document.getElementById('modalBtn').style.display = 'inline-block';
                 document.getElementById('customModal').callback = () => { document.getElementById('step7').classList.add('hidden'); document.getElementById('bsodScreen').classList.remove('hidden'); playSound('wrong'); setTimeout(() => { document.getElementById('bsodScreen').classList.add('hidden'); nextStep(7, 8); }, 4000); };
@@ -1023,7 +1023,7 @@
                         clearInterval(speedTimer); 
                         document.getElementById('speedTimer').innerText = "0.0"; 
                         playSound('wrong'); 
-                        document.getElementById('speedMsg').innerText = "HAYA: Too slow! Just kidding, I Ik already. You pass! 😂"; 
+                        document.getElementById('speedMsg').innerText = "HAYA: Too slow! Just kidding, Ik already that you love your gulab jamun. You pass! 😂"; 
                         document.getElementById('proceedSpeed').classList.remove('hidden'); 
                     } 
                 }, 100); 
@@ -1092,7 +1092,7 @@
             
             if(ropeScore >= 100) { 
                 ropeScore = 100; ropeDone = true; clearInterval(ropeTimer); playSound('right'); 
-                tracker.ropeChallenge = "She pulled him closer and they hugged! 🪢👩‍❤️‍👨";
+                tracker.ropeChallenge = "You pulled Harsh closer and hugged! 🪢👩‍❤️‍👨";
                 
                 document.getElementById('ropeBarContainer').classList.add('hidden');
                 document.getElementById('ropeBtn').classList.add('hidden');
@@ -1131,7 +1131,7 @@
             for(let i=0; i<45; i++) { let sf = document.createElement('div'); sf.innerHTML = '🌻'; sf.className = 'sunflower'; sf.style.left = Math.random() * 100 + 'vw'; sf.style.animationDuration = (Math.random() * 3 + 2) + 's'; document.body.appendChild(sf); }
             
             // ---> NOW ROUTES TO PEEK HEART AFTER THE LETTER <---
-            showModal("A virtual sunflower for my sunshine. 🌻 (Haya is signing off...)", () => { document.getElementById('finalQuote').innerText = "Let's love to the maximum. Life goes on, love remains forever... 💞"; nextStep(13, 'PeekHeart'); });
+            showModal("A virtual sunflower for my sunshine.🌻 (Haya is signing off...)", () => { document.getElementById('finalQuote').innerText = "Let's love to the maximum. Life goes on, love remains forever... 💞"; nextStep(13, 'PeekHeart'); });
         }
 
         function actionHand(choice) {
